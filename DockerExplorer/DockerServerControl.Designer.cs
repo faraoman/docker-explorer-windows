@@ -42,9 +42,12 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.treeDockerImages = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -55,7 +58,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1194, 772);
+            this.tabControl1.Size = new System.Drawing.Size(1173, 756);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -66,7 +69,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1186, 735);
+            this.tabPage1.Size = new System.Drawing.Size(1165, 719);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Images";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -84,7 +87,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(423, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(760, 729);
+            this.panel1.Size = new System.Drawing.Size(739, 713);
             this.panel1.TabIndex = 2;
             // 
             // txtTags
@@ -95,7 +98,7 @@
             this.txtTags.Multiline = true;
             this.txtTags.Name = "txtTags";
             this.txtTags.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTags.Size = new System.Drawing.Size(608, 215);
+            this.txtTags.Size = new System.Drawing.Size(587, 215);
             this.txtTags.TabIndex = 7;
             // 
             // label4
@@ -113,7 +116,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSize.Location = new System.Drawing.Point(134, 94);
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(608, 29);
+            this.txtSize.Size = new System.Drawing.Size(587, 29);
             this.txtSize.TabIndex = 5;
             // 
             // label3
@@ -131,7 +134,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParentId.Location = new System.Drawing.Point(133, 52);
             this.txtParentId.Name = "txtParentId";
-            this.txtParentId.Size = new System.Drawing.Size(608, 29);
+            this.txtParentId.Size = new System.Drawing.Size(587, 29);
             this.txtParentId.TabIndex = 3;
             // 
             // txtId
@@ -140,7 +143,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtId.Location = new System.Drawing.Point(134, 12);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(608, 29);
+            this.txtId.Size = new System.Drawing.Size(587, 29);
             this.txtId.TabIndex = 2;
             // 
             // label2
@@ -165,7 +168,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(418, 3);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(5, 729);
+            this.splitter1.Size = new System.Drawing.Size(5, 713);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -174,19 +177,32 @@
             this.treeDockerImages.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeDockerImages.Location = new System.Drawing.Point(3, 3);
             this.treeDockerImages.Name = "treeDockerImages";
-            this.treeDockerImages.Size = new System.Drawing.Size(415, 729);
+            this.treeDockerImages.Size = new System.Drawing.Size(415, 713);
             this.treeDockerImages.TabIndex = 0;
             this.treeDockerImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDockerImages_AfterSelect);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1186, 735);
+            this.tabPage2.Size = new System.Drawing.Size(1165, 719);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Containers";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1159, 713);
+            this.dataGridView1.TabIndex = 0;
             // 
             // DockerServerControl
             // 
@@ -194,11 +210,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
             this.Name = "DockerServerControl";
-            this.Size = new System.Drawing.Size(1194, 772);
+            this.Size = new System.Drawing.Size(1173, 756);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
       }
@@ -219,5 +237,6 @@
       private System.Windows.Forms.Label label3;
       private System.Windows.Forms.TextBox txtTags;
       private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.DataGridView dataGridView1;
    }
 }

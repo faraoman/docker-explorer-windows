@@ -27,6 +27,7 @@ namespace DockerExplorer
          if (!this.IsInDesignMode())
          {
             ReloadImages();
+            ReloadContainers();
          }
       }
 
@@ -35,6 +36,11 @@ namespace DockerExplorer
          IReadOnlyCollection<DockerImage> images = await _presenter.GetAllImagesAsync();
 
          AddImages(images, treeDockerImages.Nodes);
+      }
+
+      private async void ReloadContainers()
+      {
+         await _presenter.GetAllContainersAsync();
       }
 
       private void AddImages(IReadOnlyCollection<DockerImage> images, TreeNodeCollection nodes)
@@ -57,7 +63,7 @@ namespace DockerExplorer
          }
       }
 
-      private void treeDockerImages_AfterSelect(object sender, TreeViewEventArgs e)
+      private async void treeDockerImages_AfterSelect(object sender, TreeViewEventArgs e)
       {
          if (treeDockerImages.SelectedNode == null || !(treeDockerImages.SelectedNode.Tag is DockerImage image))
             return;
@@ -67,6 +73,7 @@ namespace DockerExplorer
          txtSize.Text = image.Size.ToFileSizeUiString();
          txtTags.Text = string.Join(Environment.NewLine, image.RepoTags);
 
+         await _presenter.GetDetailsAsync(null);
       }
    }
 }

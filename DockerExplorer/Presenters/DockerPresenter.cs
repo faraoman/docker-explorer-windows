@@ -34,6 +34,17 @@ namespace DockerExplorer.Presenters
          return roots;
       }
 
+      public async Task<IReadOnlyCollection<DockerContainer>> GetAllContainersAsync()
+      {
+         IList<ContainerListResponse> containersResponse = await _client.Containers.ListContainersAsync(new ContainersListParameters { All = true });
+
+         return null;
+      }
+
+      public async Task GetDetailsAsync(string containerId)
+      {
+      }
+
       private void AddChildren(IReadOnlyCollection<DockerImage> allImages, DockerImage parent)
       {
          var children = allImages.Where(i => i.ParentId == parent.Id).ToList();
