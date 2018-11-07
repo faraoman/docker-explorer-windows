@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DockerExplorer.Presenters;
 using DockerExplorer.Model;
 using NetBox.Extensions;
+using DockerExplorer.WinForms;
 
 namespace DockerExplorer
 {
@@ -40,7 +41,30 @@ namespace DockerExplorer
 
       private async void ReloadContainers()
       {
-         await _presenter.GetAllContainersAsync();
+         IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
+
+         containersList.Items.Clear();
+         foreach(DockerContainer container in containers)
+         {
+            containersList.Items.Add(
+               new ListViewItem(new string[]
+               {
+                  container.ShortId,
+                  container.Name,
+                  container.Image,
+                  container.Created.ToString(),
+                  container.State,
+                  container.Status
+               })
+               {
+                  Tag = container
+               });
+         }
+
+         foreach(ColumnHeader header in containersList.Columns)
+         {
+            header.Width = -2;
+         }
       }
 
       private void AddImages(IReadOnlyCollection<DockerImage> images, TreeNodeCollection nodes)
@@ -60,6 +84,8 @@ namespace DockerExplorer
             {
                AddImages(image.Children, node.Nodes);
             }
+
+            node.Expand();
          }
       }
 
@@ -72,8 +98,25 @@ namespace DockerExplorer
          txtParentId.Text = image.ParentId;
          txtSize.Text = image.Size.ToFileSizeUiString();
          txtTags.Text = string.Join(Environment.NewLine, image.RepoTags);
+      }
 
-         await _presenter.GetDetailsAsync(null);
+      private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+      {
+         ReloadContainers();
+      }
+
+      private void containersList_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if (containersList.SelectedItems.Count == 0)
+         {
+            return;
+         }
+
+         var container = containersList.SelectedItems[0].Tag as DockerContainer;
+
+         dockerContainerDetails.DockerContainer = container;
+
+         //await _presenter.GetDetailsAsync(container.Id);
       }
    }
 }

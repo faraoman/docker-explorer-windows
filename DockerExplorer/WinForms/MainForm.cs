@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace DockerExplorer
 {
-    public partial class MainForm : Form
-    {
-        public MainForm()
-        {
-            InitializeComponent();
-        }
-    }
+   public partial class MainForm : Form
+   {
+      public MainForm()
+      {
+         InitializeComponent();
+
+         this.AutoScaleMode = AutoScaleMode.Dpi;
+      }
+   }
 }

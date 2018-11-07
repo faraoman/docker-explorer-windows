@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace DockerExplorer
+namespace DockerExplorer.WinForms
 {
    internal static class ControlExtension
    {

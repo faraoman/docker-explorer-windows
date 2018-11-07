@@ -1,16 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Docker.DotNet.Models;
 
 namespace DockerExplorer.Model
 {
-   public class DockerContainer
+   public class DockerContainer : DockerEntity
    {
-      public DockerContainer()
+      internal DockerContainer(ContainerListResponse wr)
       {
-
+         Id = wr.ID;
+         Image = wr.Image;
+         ImageId = wr.ImageID;
+         State = wr.State;
+         Status = wr.Status;
+         Name = wr.Names?.Count > 0
+            ? wr.Names.First()
+            : null;
+         Command = wr.Command;
+         Created = wr.Created;
+         Labels = new Dictionary<string, string>(wr.Labels);
       }
+
+      public string Id { get; }
+
+      public string ShortId => GetShortId(Id);
+
+      public string Name { get; }
+
+      public string Image { get; }
+
+      public string ImageId { get; }
+
+      public string State { get; }
+
+      public string Status { get; }
+
+      public string Command { get; }
+
+      public DateTime Created { get; }
+
+      public IDictionary<string, string> Labels { get; }
    }
 }

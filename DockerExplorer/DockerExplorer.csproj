@@ -68,28 +68,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlExtensions.cs" />
-    <Compile Include="DockerServerControl.cs">
+    <Compile Include="WinForms\ControlExtensions.cs" />
+    <Compile Include="WinForms\DockerContainerDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DockerServerControl.Designer.cs">
+    <Compile Include="WinForms\DockerContainerDetails.Designer.cs">
+      <DependentUpon>DockerContainerDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForms\DockerServerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForms\DockerServerControl.Designer.cs">
       <DependentUpon>DockerServerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="WinForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="WinForms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DockerContainer.cs" />
+    <Compile Include="Model\DockerEntity.cs" />
     <Compile Include="Model\DockerImage.cs" />
     <Compile Include="Presenters\DockerPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DockerServerControl.resx">
+    <EmbeddedResource Include="WinForms\DockerContainerDetails.resx">
+      <DependentUpon>DockerContainerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\DockerServerControl.resx">
       <DependentUpon>DockerServerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="WinForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
