@@ -28,12 +28,12 @@
       /// </summary>
       private void InitializeComponent()
       {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockerServerControl));
             System.Windows.Forms.ColumnHeader ID;
             System.Windows.Forms.ColumnHeader Name;
             System.Windows.Forms.ColumnHeader Image;
             System.Windows.Forms.ColumnHeader Created;
             System.Windows.Forms.ColumnHeader State;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockerServerControl));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,12 +48,12 @@
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.treeDockerImages = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dockerContainerDetails = new DockerExplorer.WinForms.DockerContainerDetails();
             this.splitter2 = new System.Windows.Forms.Splitter();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.containersList = new System.Windows.Forms.ListView();
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dockerContainerDetails = new DockerExplorer.WinForms.DockerContainerDetails();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Image = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -66,10 +66,30 @@
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // ID
+            // 
+            ID.Text = "ID";
+            // 
+            // Name
+            // 
+            Name.Text = "Name";
+            // 
+            // Image
+            // 
+            Image.Text = "Image";
+            // 
+            // Created
+            // 
+            Created.Text = "Created";
+            // 
+            // State
+            // 
+            State.Text = "State";
+            // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -82,10 +102,10 @@
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.splitter1);
             this.tabPage1.Controls.Add(this.treeDockerImages);
-            this.tabPage1.Location = new System.Drawing.Point(4, 38);
+            this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1165, 714);
+            this.tabPage1.Size = new System.Drawing.Size(1165, 719);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Images";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,7 +123,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(423, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(739, 708);
+            this.panel1.Size = new System.Drawing.Size(739, 713);
             this.panel1.TabIndex = 2;
             // 
             // txtTags
@@ -122,7 +142,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(64, 136);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 29);
+            this.label4.Size = new System.Drawing.Size(63, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "Tags:";
             // 
@@ -132,7 +152,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSize.Location = new System.Drawing.Point(134, 94);
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(587, 34);
+            this.txtSize.Size = new System.Drawing.Size(587, 29);
             this.txtSize.TabIndex = 5;
             // 
             // label3
@@ -140,7 +160,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(70, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 29);
+            this.label3.Size = new System.Drawing.Size(57, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Size:";
             // 
@@ -150,7 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParentId.Location = new System.Drawing.Point(133, 52);
             this.txtParentId.Name = "txtParentId";
-            this.txtParentId.Size = new System.Drawing.Size(587, 34);
+            this.txtParentId.Size = new System.Drawing.Size(587, 29);
             this.txtParentId.TabIndex = 3;
             // 
             // txtId
@@ -159,7 +179,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtId.Location = new System.Drawing.Point(134, 12);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(587, 34);
+            this.txtId.Size = new System.Drawing.Size(587, 29);
             this.txtId.TabIndex = 2;
             // 
             // label2
@@ -167,7 +187,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 29);
+            this.label2.Size = new System.Drawing.Size(99, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Parent ID:";
             // 
@@ -176,7 +196,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(90, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 29);
+            this.label1.Size = new System.Drawing.Size(37, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID:";
             // 
@@ -184,7 +204,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(418, 3);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(5, 708);
+            this.splitter1.Size = new System.Drawing.Size(5, 713);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
             // 
@@ -194,7 +214,7 @@
             this.treeDockerImages.HideSelection = false;
             this.treeDockerImages.Location = new System.Drawing.Point(3, 3);
             this.treeDockerImages.Name = "treeDockerImages";
-            this.treeDockerImages.Size = new System.Drawing.Size(415, 708);
+            this.treeDockerImages.Size = new System.Drawing.Size(415, 713);
             this.treeDockerImages.TabIndex = 0;
             this.treeDockerImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDockerImages_AfterSelect);
             // 
@@ -204,13 +224,21 @@
             this.tabPage2.Controls.Add(this.splitter2);
             this.tabPage2.Controls.Add(this.containersList);
             this.tabPage2.Controls.Add(this.toolStrip1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1165, 714);
+            this.tabPage2.Size = new System.Drawing.Size(1165, 719);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Containers";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dockerContainerDetails
+            // 
+            this.dockerContainerDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockerContainerDetails.Location = new System.Drawing.Point(3, 312);
+            this.dockerContainerDetails.Name = "dockerContainerDetails";
+            this.dockerContainerDetails.Size = new System.Drawing.Size(1159, 404);
+            this.dockerContainerDetails.TabIndex = 3;
             // 
             // splitter2
             // 
@@ -220,27 +248,6 @@
             this.splitter2.Size = new System.Drawing.Size(1159, 6);
             this.splitter2.TabIndex = 2;
             this.splitter2.TabStop = false;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1159, 35);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(32, 32);
-            this.toolStripButton1.Text = "refreshContainersToolButton";
             // 
             // containersList
             // 
@@ -264,37 +271,30 @@
             this.containersList.View = System.Windows.Forms.View.Details;
             this.containersList.SelectedIndexChanged += new System.EventHandler(this.containersList_SelectedIndexChanged);
             // 
-            // ID
-            // 
-            ID.Text = "ID";
-            // 
-            // Name
-            // 
-            Name.Text = "Name";
-            // 
-            // Image
-            // 
-            Image.Text = "Image";
-            // 
-            // Created
-            // 
-            Created.Text = "Created";
-            // 
-            // State
-            // 
-            State.Text = "State";
-            // 
             // Status
             // 
             this.Status.Text = "Status";
             // 
-            // dockerContainerDetails
+            // toolStrip1
             // 
-            this.dockerContainerDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockerContainerDetails.Location = new System.Drawing.Point(3, 312);
-            this.dockerContainerDetails.Name = "dockerContainerDetails";
-            this.dockerContainerDetails.Size = new System.Drawing.Size(1159, 399);
-            this.dockerContainerDetails.TabIndex = 3;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1159, 35);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(32, 32);
+            this.toolStripButton1.Text = "refreshContainersToolButton";
             // 
             // DockerServerControl
             // 
