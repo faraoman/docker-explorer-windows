@@ -25,7 +25,8 @@ namespace DockerExplorer.WinForms
             containerLabels.Items.Clear();
             foreach (KeyValuePair<string, string> label in value.Labels)
             {
-               containerLabels.Items.Add(new ListViewItem(new[] { label.Key, label.Value }, 0));
+               containerLabels.Items.Add(
+                  new ListViewItem(new[] { label.Key, label.Value }, 0));
             }
             foreach(ColumnHeader column in containerLabels.Columns)
             {

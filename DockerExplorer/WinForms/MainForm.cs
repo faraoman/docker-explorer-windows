@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DockerExplorer.WinForms;
 
 namespace DockerExplorer
 {
@@ -17,6 +18,11 @@ namespace DockerExplorer
          InitializeComponent();
 
          this.AutoScaleMode = AutoScaleMode.Dpi;
+
+         if(!this.IsInDesignMode())
+         {
+            this.Controls.Add(new DockerServerControl() { Dock = DockStyle.Fill });
+         }
       }
    }
 }

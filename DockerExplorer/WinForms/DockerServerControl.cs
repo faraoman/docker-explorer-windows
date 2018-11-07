@@ -57,13 +57,26 @@ namespace DockerExplorer
                   container.Status
                })
                {
-                  Tag = container
+                  Tag = container,
+                  BackColor = GetContainerStateColor(container)
                });
          }
 
          foreach(ColumnHeader header in containersList.Columns)
          {
             header.Width = -2;
+         }
+      }
+
+      private Color GetContainerStateColor(DockerContainer container)
+      {
+         switch (container.State)
+         {
+            case "exited":
+               return Color.LightPink;
+
+            default:
+               return Color.White;
          }
       }
 
