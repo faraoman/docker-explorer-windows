@@ -12,16 +12,29 @@ namespace DockerExplorer.Presenters
 {
    class DockerPresenter : IProgress<ContainerStatsResponse>
    {
-      private readonly DockerClient _client = new DockerClientConfiguration(LocalDockerUri()).CreateClient();
+      private DockerClient _client;
 
       public DockerPresenter()
       {
 
       }
 
+      private DockerClient Client
+      {
+         get
+         {
+            if(_client == null)
+            {
+               _client = new DockerClientConfiguration(LocalDockerUri()).CreateClient();
+            }
+
+            return _client;
+         }
+      }
+
       public async Task<IReadOnlyCollection<DockerImage>> GetAllImagesAsync()
       {
-         IList<ImagesListResponse> responseImages = await _client.Images.ListImagesAsync(new ImagesListParameters { All = true });
+         IList<ImagesListResponse> responseImages = await Client.Images.ListImagesAsync(new ImagesListParameters { All = true });
          var images = responseImages.Select(r => new DockerImage(r)).ToList();
 
          List<DockerImage> roots = images.Where(i => string.IsNullOrEmpty(i.ParentId)).ToList();
@@ -36,14 +49,14 @@ namespace DockerExplorer.Presenters
 
       public async Task<IReadOnlyCollection<DockerContainer>> GetAllContainersAsync()
       {
-         IList<ContainerListResponse> containersResponse = await _client.Containers.ListContainersAsync(new ContainersListParameters { All = true });
+         IList<ContainerListResponse> containersResponse = await Client.Containers.ListContainersAsync(new ContainersListParameters { All = true });
 
          return containersResponse.Select(r => new DockerContainer(r)).ToList();
       }
 
       public async Task GetDetailsAsync(string containerId)
       {
-         await _client.Containers.GetContainerStatsAsync(
+         await Client.Containers.GetContainerStatsAsync(
             containerId,
             new ContainerStatsParameters
             {

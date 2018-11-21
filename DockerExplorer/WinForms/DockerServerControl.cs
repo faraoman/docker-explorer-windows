@@ -28,7 +28,6 @@ namespace DockerExplorer
          if (!this.IsInDesignMode())
          {
             ReloadImages();
-            ReloadContainers();
          }
       }
 
@@ -37,47 +36,6 @@ namespace DockerExplorer
          IReadOnlyCollection<DockerImage> images = await _presenter.GetAllImagesAsync();
 
          AddImages(images, treeDockerImages.Nodes);
-      }
-
-      private async void ReloadContainers()
-      {
-         IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
-
-         containersList.Items.Clear();
-         foreach(DockerContainer container in containers)
-         {
-            containersList.Items.Add(
-               new ListViewItem(new string[]
-               {
-                  container.ShortId,
-                  container.Name,
-                  container.Image,
-                  container.Created.ToString(),
-                  container.State,
-                  container.Status
-               })
-               {
-                  Tag = container,
-                  BackColor = GetContainerStateColor(container)
-               });
-         }
-
-         foreach(ColumnHeader header in containersList.Columns)
-         {
-            header.Width = -2;
-         }
-      }
-
-      private Color GetContainerStateColor(DockerContainer container)
-      {
-         switch (container.State)
-         {
-            case "exited":
-               return Color.LightPink;
-
-            default:
-               return Color.White;
-         }
       }
 
       private void AddImages(IReadOnlyCollection<DockerImage> images, TreeNodeCollection nodes)
@@ -111,25 +69,6 @@ namespace DockerExplorer
          txtParentId.Text = image.ParentId;
          txtSize.Text = image.Size.ToFileSizeUiString();
          txtTags.Text = string.Join(Environment.NewLine, image.RepoTags);
-      }
-
-      private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-      {
-         ReloadContainers();
-      }
-
-      private void containersList_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         if (containersList.SelectedItems.Count == 0)
-         {
-            return;
-         }
-
-         var container = containersList.SelectedItems[0].Tag as DockerContainer;
-
-         dockerContainerDetails.DockerContainer = container;
-
-         //await _presenter.GetDetailsAsync(container.Id);
       }
    }
 }

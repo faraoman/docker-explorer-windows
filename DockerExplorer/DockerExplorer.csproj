@@ -97,6 +97,12 @@
     <Compile Include="WinForms\DockerContainerDetails.Designer.cs">
       <DependentUpon>DockerContainerDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\DockerContainers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForms\DockerContainers.Designer.cs">
+      <DependentUpon>DockerContainers.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\DockerServerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="WinForms\DockerContainerDetails.resx">
       <DependentUpon>DockerContainerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\DockerContainers.resx">
+      <DependentUpon>DockerContainers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\DockerServerControl.resx">
       <DependentUpon>DockerServerControl.cs</DependentUpon>
