@@ -20,6 +20,7 @@ namespace DockerExplorer.Model
          Command = wr.Command;
          Created = wr.Created;
          Labels = new Dictionary<string, string>(wr.Labels);
+         Mounts = wr.Mounts == null ? new List<MountPoint>() : new List<MountPoint>(wr.Mounts);
       }
 
       public string Id { get; }
@@ -41,5 +42,7 @@ namespace DockerExplorer.Model
       public DateTime Created { get; }
 
       public IDictionary<string, string> Labels { get; }
+
+      public List<MountPoint> Mounts { get; }
    }
 }
