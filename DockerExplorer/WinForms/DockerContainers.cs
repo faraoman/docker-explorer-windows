@@ -30,30 +30,37 @@ namespace DockerExplorer.WinForms
 
       private async void ReloadContainers()
       {
-         IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
-
-         containersList.Items.Clear();
-         foreach (DockerContainer container in containers)
+         try
          {
-            containersList.Items.Add(
-               new ListViewItem(new string[]
-               {
+            IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
+
+            containersList.Items.Clear();
+            foreach (DockerContainer container in containers)
+            {
+               containersList.Items.Add(
+                  new ListViewItem(new string[]
+                  {
                   container.ShortId,
                   container.Name,
                   container.Image,
                   container.Created.ToString(),
                   container.State,
                   container.Status
-               })
-               {
-                  Tag = container,
-                  BackColor = GetContainerStateColor(container)
-               });
-         }
+                  })
+                  {
+                     Tag = container,
+                     BackColor = GetContainerStateColor(container)
+                  });
+            }
 
-         foreach (ColumnHeader header in containersList.Columns)
+            foreach (ColumnHeader header in containersList.Columns)
+            {
+               header.Width = -2;
+            }
+         }
+         catch(Exception ex)
          {
-            header.Width = -2;
+            MessageBox.Show(ex.ToString());
          }
       }
 
@@ -62,7 +69,7 @@ namespace DockerExplorer.WinForms
          ReloadContainers();
       }
 
-      private void containersList_SelectedIndexChanged(object sender, EventArgs e)
+      private async void containersList_SelectedIndexChanged(object sender, EventArgs e)
       {
          if (containersList.SelectedItems.Count == 0)
          {
@@ -71,9 +78,8 @@ namespace DockerExplorer.WinForms
 
          var container = containersList.SelectedItems[0].Tag as DockerContainer;
 
+         dockerContainerDetails.Presenter = _presenter;
          dockerContainerDetails.DockerContainer = container;
-
-         //await _presenter.GetDetailsAsync(container.Id);
       }
 
       private Color GetContainerStateColor(DockerContainer container)

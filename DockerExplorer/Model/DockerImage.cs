@@ -9,22 +9,33 @@ namespace DockerExplorer.Model
 {
    public class DockerImage
    {
-      internal DockerImage(ImagesListResponse wr)
+      public DockerImage(string id, string parentId, string tag, long size)
       {
-         Id = wr.ID;
-         ParentId = wr.ParentID;
-         RepoTags = wr.RepoTags.ToArray();
-         Size = wr.Size;
+         Id = id;
+         ParentId = parentId;
+         Tag = tag;
+         Size = size;
+      }
+
+      internal static IEnumerable<DockerImage> CreateMany(ImagesListResponse wr)
+      {
+         foreach(string tag in wr.RepoTags)
+         {
+            var image = new DockerImage(wr.ID, wr.ParentID, tag, wr.Size);
+            yield return image;
+         }
       }
 
       public string Id { get; }
 
       public string ParentId { get; }
 
-      public string[] RepoTags { get; }
+      public string Tag { get; }
 
       public long Size { get; }
 
       public IReadOnlyCollection<DockerImage> Children { get; set; }
+
+      public override string ToString() => Tag;
    }
 }

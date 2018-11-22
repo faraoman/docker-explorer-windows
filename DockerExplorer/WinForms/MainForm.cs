@@ -24,5 +24,10 @@ namespace DockerExplorer
             this.Controls.Add(new DockerServerControl() { Dock = DockStyle.Fill });
          }
       }
+
+      private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         new AboutForm().ShowDialog(this);
+      }
    }
 }

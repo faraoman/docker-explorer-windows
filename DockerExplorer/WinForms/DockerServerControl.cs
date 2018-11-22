@@ -33,9 +33,16 @@ namespace DockerExplorer
 
       private async void ReloadImages()
       {
-         IReadOnlyCollection<DockerImage> images = await _presenter.GetAllImagesAsync();
+         try
+         {
+            IReadOnlyCollection<DockerImage> images = await _presenter.GetAllImagesAsync();
 
-         AddImages(images, treeDockerImages.Nodes);
+            AddImages(images, treeDockerImages.Nodes);
+         }
+         catch(Exception ex)
+         {
+            MessageBox.Show(ex.ToString());
+         }
       }
 
       private void AddImages(IReadOnlyCollection<DockerImage> images, TreeNodeCollection nodes)
@@ -44,7 +51,7 @@ namespace DockerExplorer
 
          foreach (DockerImage image in images)
          {
-            var node = new TreeNode(image.RepoTags[0])
+            var node = new TreeNode(image.Tag)
             {
                Tag = image
             };
@@ -68,7 +75,7 @@ namespace DockerExplorer
          txtId.Text = image.Id;
          txtParentId.Text = image.ParentId;
          txtSize.Text = image.Size.ToFileSizeUiString();
-         txtTags.Text = string.Join(Environment.NewLine, image.RepoTags);
+         txtTags.Text = string.Join(Environment.NewLine, image.Tag);
       }
    }
 }

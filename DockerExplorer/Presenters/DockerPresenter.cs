@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Docker.DotNet;
 using Docker.DotNet.Models;
@@ -10,7 +11,7 @@ using DockerExplorer.Model;
 
 namespace DockerExplorer.Presenters
 {
-   class DockerPresenter : IProgress<ContainerStatsResponse>
+   class DockerPresenter
    {
       private DockerClient _client;
 
@@ -35,7 +36,7 @@ namespace DockerExplorer.Presenters
       public async Task<IReadOnlyCollection<DockerImage>> GetAllImagesAsync()
       {
          IList<ImagesListResponse> responseImages = await Client.Images.ListImagesAsync(new ImagesListParameters { All = true });
-         var images = responseImages.Select(r => new DockerImage(r)).ToList();
+         var images = responseImages.SelectMany(DockerImage.CreateMany).ToList();
 
          List<DockerImage> roots = images.Where(i => string.IsNullOrEmpty(i.ParentId)).ToList();
 
@@ -54,7 +55,7 @@ namespace DockerExplorer.Presenters
          return containersResponse.Select(r => new DockerContainer(r)).ToList();
       }
 
-      public async Task GetDetailsAsync(string containerId)
+      public async Task GetContainerDetailsAsync(string containerId, IProgress<ContainerStatsResponse> progressCallback)
       {
          await Client.Containers.GetContainerStatsAsync(
             containerId,
@@ -62,14 +63,20 @@ namespace DockerExplorer.Presenters
             {
                Stream = true
             },
-            this);
-
-         ContainerInspectResponse inspectInfo = await _client.Containers.InspectContainerAsync(containerId);
+            progressCallback);
       }
 
-      public void Report(ContainerStatsResponse value)
+      public async Task GetContainerLogs(string containerId, IProgress<string> progressCallback)
       {
-
+         await Client.Containers.GetContainerLogsAsync(containerId,
+            new ContainerLogsParameters
+            {
+               Follow = true,
+               ShowStdout = true,
+               ShowStderr = true,
+            },
+            CancellationToken.None,
+            progressCallback);
       }
 
       private void AddChildren(IReadOnlyCollection<DockerImage> allImages, DockerImage parent)

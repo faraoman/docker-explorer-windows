@@ -1,24 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using DockerExplorer.Model;
 using Docker.DotNet.Models;
 using System.Diagnostics;
+using DockerExplorer.Presenters;
+using System;
 
 namespace DockerExplorer.WinForms
 {
-   public partial class DockerContainerDetails : UserControl
+   public partial class DockerContainerDetails : UserControl, IProgress<ContainerStatsResponse>, IProgress<string>
    {
       public DockerContainerDetails()
       {
          InitializeComponent();
       }
+
+      internal DockerPresenter Presenter { get; set; }
 
       public DockerContainer DockerContainer
       {
@@ -58,6 +55,10 @@ namespace DockerExplorer.WinForms
             {
                column.Width = -2;
             }
+
+            //listen for updates
+            Presenter.GetContainerDetailsAsync(value.Id, this);
+            Presenter.GetContainerLogs(value.Id, this);
          }
       }
 
@@ -71,6 +72,34 @@ namespace DockerExplorer.WinForms
          string path = mountPoint.Source;
 
          Process.Start(path);
+      }
+
+      double _prevCpu = 0;
+      double _prevSystem = 0;
+      int _pointIdx = 0;
+
+      public void Report(ContainerStatsResponse value)
+      {
+         //see https://stackoverflow.com/questions/30271942/get-docker-container-cpu-usage-as-percentage
+
+         double cpu = 0;
+         double cpuDelta = value.CPUStats.CPUUsage.TotalUsage - _prevCpu;
+         double systemDelta = value.CPUStats.SystemUsage - _prevSystem;
+
+         if(cpuDelta > 0 && systemDelta > 0)
+         {
+            cpu = (cpuDelta / systemDelta) * value.CPUStats.CPUUsage.PercpuUsage.Count * 100;
+         }
+
+         _prevCpu = value.CPUStats.CPUUsage.TotalUsage;
+         _prevSystem = value.CPUStats.SystemUsage;
+
+         chart1.Series[0].Points.AddXY(_pointIdx++, cpu);
+      }
+
+      public void Report(string value)
+      {
+         richLogs.AppendText(value);
       }
    }
 }
