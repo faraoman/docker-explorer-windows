@@ -12,4 +12,4 @@ Really basic, mostly for my own needs.
 
 Shows local images and layer history:
 
-![Images History](img/images-history.png)
+![Images History](http://i.isolineltd.com/github/de-screenvideo.gif)
