@@ -16,6 +16,7 @@ namespace DockerExplorer.WinForms
    public partial class DockerImages : UserControl
    {
       private readonly DockerPresenter _presenter;
+      private string _lastSelectedImageId = null;
 
       public DockerImages()
       {
@@ -41,6 +42,13 @@ namespace DockerExplorer.WinForms
          {
             this.Handle(ex);
          }
+
+         if(_lastSelectedImageId == null)
+         {
+            _lastSelectedImageId = (treeDockerImages.Nodes.Cast<TreeNode>().FirstOrDefault()?.Tag as DockerImage)?.ShortId;
+         }
+
+         SelectImage(_lastSelectedImageId);
       }
 
       private void AddImages(IReadOnlyCollection<DockerImage> images, TreeNodeCollection nodes)
@@ -111,11 +119,17 @@ namespace DockerExplorer.WinForms
 
       private void linkParentId_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
       {
-         string parentId = linkParentId.Text;
+         SelectImage(linkParentId.Text);
+      }
 
-         TreeNode node = FindNode(treeDockerImages.Nodes, i => i.ShortId == parentId);
+      private void SelectImage(string imageShortId)
+      {
+         if (imageShortId == null)
+            return;
 
-         if(node != null)
+         TreeNode node = FindNode(treeDockerImages.Nodes, i => i.ShortId == imageShortId);
+
+         if (node != null)
          {
             treeDockerImages.SelectedNode = node;
          }
