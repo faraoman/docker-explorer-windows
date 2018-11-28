@@ -41,15 +41,15 @@
             System.Windows.Forms.ColumnHeader Size;
             System.Windows.Forms.ColumnHeader Comment;
             System.Windows.Forms.ColumnHeader Tags;
+            this.listContainerHistory = new System.Windows.Forms.ListView();
             this.treeDockerImages = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTag = new System.Windows.Forms.TextBox();
+            this.txtRepository = new System.Windows.Forms.TextBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.txtSize = new System.Windows.Forms.TextBox();
-            this.txtParentId = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.txtRepository = new System.Windows.Forms.TextBox();
-            this.txtTag = new System.Windows.Forms.TextBox();
-            this.listContainerHistory = new System.Windows.Forms.ListView();
+            this.linkParentId = new System.Windows.Forms.LinkLabel();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -63,8 +63,8 @@
             Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Tags = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel1.SuspendLayout();
             groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -111,84 +111,6 @@
             splitter2.TabIndex = 4;
             splitter2.TabStop = false;
             // 
-            // treeDockerImages
-            // 
-            this.treeDockerImages.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeDockerImages.HideSelection = false;
-            this.treeDockerImages.Location = new System.Drawing.Point(0, 0);
-            this.treeDockerImages.Name = "treeDockerImages";
-            this.treeDockerImages.Size = new System.Drawing.Size(484, 1068);
-            this.treeDockerImages.TabIndex = 1;
-            this.treeDockerImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDockerImages_AfterSelect);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(groupBox1);
-            this.panel1.Controls.Add(this.txtTag);
-            this.panel1.Controls.Add(label5);
-            this.panel1.Controls.Add(this.txtRepository);
-            this.panel1.Controls.Add(this.splitter1);
-            this.panel1.Controls.Add(label4);
-            this.panel1.Controls.Add(this.txtSize);
-            this.panel1.Controls.Add(label3);
-            this.panel1.Controls.Add(this.txtParentId);
-            this.panel1.Controls.Add(this.txtId);
-            this.panel1.Controls.Add(label2);
-            this.panel1.Controls.Add(label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(491, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(916, 1068);
-            this.panel1.TabIndex = 3;
-            // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 1068);
-            this.splitter1.TabIndex = 8;
-            this.splitter1.TabStop = false;
-            // 
-            // txtSize
-            // 
-            this.txtSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSize.Location = new System.Drawing.Point(134, 94);
-            this.txtSize.Name = "txtSize";
-            this.txtSize.ReadOnly = true;
-            this.txtSize.Size = new System.Drawing.Size(764, 29);
-            this.txtSize.TabIndex = 5;
-            // 
-            // txtParentId
-            // 
-            this.txtParentId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtParentId.Location = new System.Drawing.Point(133, 52);
-            this.txtParentId.Name = "txtParentId";
-            this.txtParentId.ReadOnly = true;
-            this.txtParentId.Size = new System.Drawing.Size(764, 29);
-            this.txtParentId.TabIndex = 3;
-            // 
-            // txtId
-            // 
-            this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtId.Location = new System.Drawing.Point(134, 12);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(764, 29);
-            this.txtId.TabIndex = 2;
-            // 
-            // txtRepository
-            // 
-            this.txtRepository.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRepository.Location = new System.Drawing.Point(133, 136);
-            this.txtRepository.Name = "txtRepository";
-            this.txtRepository.ReadOnly = true;
-            this.txtRepository.Size = new System.Drawing.Size(764, 29);
-            this.txtRepository.TabIndex = 9;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -197,16 +119,6 @@
             label5.Size = new System.Drawing.Size(53, 25);
             label5.TabIndex = 10;
             label5.Text = "Tag:";
-            // 
-            // txtTag
-            // 
-            this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTag.Location = new System.Drawing.Point(134, 179);
-            this.txtTag.Name = "txtTag";
-            this.txtTag.ReadOnly = true;
-            this.txtTag.Size = new System.Drawing.Size(764, 29);
-            this.txtTag.TabIndex = 11;
             // 
             // groupBox1
             // 
@@ -233,6 +145,7 @@
             Comment,
             Tags});
             this.listContainerHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listContainerHistory.FullRowSelect = true;
             this.listContainerHistory.GridLines = true;
             this.listContainerHistory.Location = new System.Drawing.Point(3, 25);
             this.listContainerHistory.Name = "listContainerHistory";
@@ -265,6 +178,95 @@
             // 
             Tags.Text = "Tags";
             // 
+            // treeDockerImages
+            // 
+            this.treeDockerImages.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeDockerImages.HideSelection = false;
+            this.treeDockerImages.Location = new System.Drawing.Point(0, 0);
+            this.treeDockerImages.Name = "treeDockerImages";
+            this.treeDockerImages.Size = new System.Drawing.Size(484, 1068);
+            this.treeDockerImages.TabIndex = 1;
+            this.treeDockerImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDockerImages_AfterSelect);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.linkParentId);
+            this.panel1.Controls.Add(groupBox1);
+            this.panel1.Controls.Add(this.txtTag);
+            this.panel1.Controls.Add(label5);
+            this.panel1.Controls.Add(this.txtRepository);
+            this.panel1.Controls.Add(this.splitter1);
+            this.panel1.Controls.Add(label4);
+            this.panel1.Controls.Add(this.txtSize);
+            this.panel1.Controls.Add(label3);
+            this.panel1.Controls.Add(this.txtId);
+            this.panel1.Controls.Add(label2);
+            this.panel1.Controls.Add(label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(491, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(916, 1068);
+            this.panel1.TabIndex = 3;
+            // 
+            // txtTag
+            // 
+            this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTag.Location = new System.Drawing.Point(134, 179);
+            this.txtTag.Name = "txtTag";
+            this.txtTag.ReadOnly = true;
+            this.txtTag.Size = new System.Drawing.Size(764, 29);
+            this.txtTag.TabIndex = 11;
+            // 
+            // txtRepository
+            // 
+            this.txtRepository.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRepository.Location = new System.Drawing.Point(133, 136);
+            this.txtRepository.Name = "txtRepository";
+            this.txtRepository.ReadOnly = true;
+            this.txtRepository.Size = new System.Drawing.Size(764, 29);
+            this.txtRepository.TabIndex = 9;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 1068);
+            this.splitter1.TabIndex = 8;
+            this.splitter1.TabStop = false;
+            // 
+            // txtSize
+            // 
+            this.txtSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSize.Location = new System.Drawing.Point(134, 94);
+            this.txtSize.Name = "txtSize";
+            this.txtSize.ReadOnly = true;
+            this.txtSize.Size = new System.Drawing.Size(764, 29);
+            this.txtSize.TabIndex = 5;
+            // 
+            // txtId
+            // 
+            this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtId.Location = new System.Drawing.Point(134, 12);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(764, 29);
+            this.txtId.TabIndex = 2;
+            // 
+            // linkParentId
+            // 
+            this.linkParentId.AutoSize = true;
+            this.linkParentId.Location = new System.Drawing.Point(133, 52);
+            this.linkParentId.Name = "linkParentId";
+            this.linkParentId.Size = new System.Drawing.Size(82, 25);
+            this.linkParentId.TabIndex = 13;
+            this.linkParentId.TabStop = true;
+            this.linkParentId.Text = "parent...";
+            this.linkParentId.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkParentId_LinkClicked);
+            // 
             // DockerImages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -274,9 +276,9 @@
             this.Controls.Add(this.treeDockerImages);
             this.Name = "DockerImages";
             this.Size = new System.Drawing.Size(1407, 1068);
+            groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
       }
@@ -286,11 +288,11 @@
       private System.Windows.Forms.TreeView treeDockerImages;
       private System.Windows.Forms.Panel panel1;
       private System.Windows.Forms.TextBox txtSize;
-      private System.Windows.Forms.TextBox txtParentId;
       private System.Windows.Forms.TextBox txtId;
       private System.Windows.Forms.Splitter splitter1;
       private System.Windows.Forms.TextBox txtTag;
       private System.Windows.Forms.TextBox txtRepository;
       private System.Windows.Forms.ListView listContainerHistory;
+      private System.Windows.Forms.LinkLabel linkParentId;
    }
 }

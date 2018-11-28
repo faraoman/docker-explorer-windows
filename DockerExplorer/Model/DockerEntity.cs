@@ -10,7 +10,13 @@ namespace DockerExplorer.Model
    {
       protected string GetShortId(string id)
       {
-         if (string.IsNullOrEmpty(id) || id.Length < 12)
+         if (string.IsNullOrEmpty(id))
+            return id;
+            
+         if (id.StartsWith("sha256:"))
+            id = id.Substring(7);
+
+         if (id.Length < 12)
             return id;
 
          return id.Substring(0, 12);

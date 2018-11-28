@@ -7,7 +7,7 @@ using Docker.DotNet.Models;
 
 namespace DockerExplorer.Model
 {
-   public class DockerImage
+   public class DockerImage : DockerEntity
    {
       public DockerImage(string id, string parentId, string tag, long size)
       {
@@ -40,9 +40,13 @@ namespace DockerExplorer.Model
 
       public string Id { get; }
 
+      public string ShortId => GetShortId(Id);
+
       public string Name => $"{Repository}:{Tag}";
 
       public string ParentId { get; }
+
+      public string ShortParentId => GetShortId(ParentId);
 
       public string Repository { get; }
 

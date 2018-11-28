@@ -71,8 +71,17 @@ namespace DockerExplorer.WinForms
          if (treeDockerImages.SelectedNode == null || !(treeDockerImages.SelectedNode.Tag is DockerImage image))
             return;
 
-         txtId.Text = image.Id;
-         txtParentId.Text = image.ParentId;
+         txtId.Text = image.ShortId;
+         if (string.IsNullOrEmpty(image.ParentId))
+         {
+            linkParentId.Enabled = false;
+            linkParentId.Text = "none";
+         }
+         else
+         {
+            linkParentId.Enabled = true;
+            linkParentId.Text = image.ShortParentId;
+         }
          txtSize.Text = image.Size.ToFileSizeUiString();
          txtRepository.Text = image.Repository;
          txtTag.Text = image.Tag;
@@ -86,7 +95,7 @@ namespace DockerExplorer.WinForms
             listContainerHistory.Items.Add(
                new ListViewItem(new[]
                {
-                  item.Id,
+                  item.ShortId,
                   item.Created.ToString(),
                   item.CreatedBy,
                   item.Size.ToFileSizeUiString(),
@@ -96,6 +105,41 @@ namespace DockerExplorer.WinForms
          }
          listContainerHistory.AutoAlign();
 
+      }
+
+
+
+      private void linkParentId_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+      {
+         string parentId = linkParentId.Text;
+
+         TreeNode node = FindNode(treeDockerImages.Nodes, i => i.ShortId == parentId);
+
+         if(node != null)
+         {
+            treeDockerImages.SelectedNode = node;
+         }
+      }
+
+      private TreeNode FindNode(TreeNodeCollection nodes, Func<DockerImage, bool> predicate)
+      {
+         foreach(TreeNode node in nodes)
+         {
+            if (node.Tag is DockerImage image)
+            {
+               if (predicate(image))
+                  return node;
+
+               if(node.Nodes.Count > 0)
+               {
+                  TreeNode cr = FindNode(node.Nodes, predicate);
+                  if (cr != null)
+                     return cr;
+               }
+            }
+         }
+
+         return null;
       }
    }
 }

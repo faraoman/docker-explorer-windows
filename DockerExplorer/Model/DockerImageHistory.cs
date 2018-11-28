@@ -26,6 +26,9 @@ namespace DockerExplorer.Model
       }
 
       public string Id { get; }
+
+      public string ShortId => GetShortId(Id);
+
       public DateTime Created { get; }
       public string CreatedBy { get; }
       public IList<string> Tags { get; }
