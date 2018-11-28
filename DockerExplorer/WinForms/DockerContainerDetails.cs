@@ -51,7 +51,7 @@ namespace DockerExplorer.WinForms
             containerMounts.AutoAlign();
 
             //listen for updates
-            Presenter.GetContainerDetailsAsync(value.Id, this);
+            //Presenter.GetContainerDetailsAsync(value.Id, this);
             Presenter.GetContainerLogs(value.Id, this);
          }
       }
@@ -87,8 +87,6 @@ namespace DockerExplorer.WinForms
 
          _prevCpu = value.CPUStats.CPUUsage.TotalUsage;
          _prevSystem = value.CPUStats.SystemUsage;
-
-         labelCpuUsage.Text = cpu.ToString();
       }
 
       public void Report(string value)
