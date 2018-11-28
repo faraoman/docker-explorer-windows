@@ -88,7 +88,7 @@ namespace DockerExplorer.WinForms
          _prevCpu = value.CPUStats.CPUUsage.TotalUsage;
          _prevSystem = value.CPUStats.SystemUsage;
 
-         chart1.Series[0].Points.AddXY(_pointIdx++, cpu);
+         labelCpuUsage.Text = cpu.ToString();
       }
 
       public void Report(string value)

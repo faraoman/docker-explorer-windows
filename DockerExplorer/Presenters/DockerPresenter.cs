@@ -62,7 +62,9 @@ namespace DockerExplorer.Presenters
          return containersResponse.Select(r => new DockerContainer(r)).ToList();
       }
 
-      public async Task GetContainerDetailsAsync(string containerId, IProgress<ContainerStatsResponse> progressCallback)
+      public async Task GetContainerDetailsAsync(string containerId,
+         IProgress<ContainerStatsResponse> progressCallback,
+         CancellationToken cancellationToken = default(CancellationToken))
       {
          await Client.Containers.GetContainerStatsAsync(
             containerId,
@@ -70,7 +72,8 @@ namespace DockerExplorer.Presenters
             {
                Stream = true
             },
-            progressCallback);
+            progressCallback,
+            cancellationToken);
       }
 
       public async Task GetContainerLogs(string containerId, IProgress<string> progressCallback)

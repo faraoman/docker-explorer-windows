@@ -39,17 +39,14 @@
             System.Windows.Forms.ColumnHeader Mode;
             System.Windows.Forms.ColumnHeader RW;
             System.Windows.Forms.ColumnHeader Propagation;
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.containerLabels = new System.Windows.Forms.ListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.Stats = new System.Windows.Forms.TabPage();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Logs = new System.Windows.Forms.TabPage();
             this.richLogs = new System.Windows.Forms.RichTextBox();
             this.Mounts = new System.Windows.Forms.TabPage();
             this.containerMounts = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelCpuUsage = new System.Windows.Forms.Label();
             Labels = new System.Windows.Forms.TabPage();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,8 +60,6 @@
             Propagation = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Labels.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.Stats.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Logs.SuspendLayout();
             this.Mounts.SuspendLayout();
             this.SuspendLayout();
@@ -72,11 +67,10 @@
             // Labels
             // 
             Labels.Controls.Add(this.containerLabels);
-            Labels.Location = new System.Drawing.Point(4, 25);
-            Labels.Margin = new System.Windows.Forms.Padding(2);
+            Labels.Location = new System.Drawing.Point(4, 33);
             Labels.Name = "Labels";
-            Labels.Padding = new System.Windows.Forms.Padding(2);
-            Labels.Size = new System.Drawing.Size(700, 406);
+            Labels.Padding = new System.Windows.Forms.Padding(3);
+            Labels.Size = new System.Drawing.Size(966, 615);
             Labels.TabIndex = 0;
             Labels.Text = "Labels";
             Labels.UseVisualStyleBackColor = true;
@@ -93,12 +87,11 @@
             this.containerLabels.GridLines = true;
             this.containerLabels.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.containerLabels.HideSelection = false;
-            this.containerLabels.Location = new System.Drawing.Point(2, 2);
-            this.containerLabels.Margin = new System.Windows.Forms.Padding(2);
+            this.containerLabels.Location = new System.Drawing.Point(3, 3);
             this.containerLabels.MultiSelect = false;
             this.containerLabels.Name = "containerLabels";
             this.containerLabels.ShowGroups = false;
-            this.containerLabels.Size = new System.Drawing.Size(696, 402);
+            this.containerLabels.Size = new System.Drawing.Size(960, 609);
             this.containerLabels.TabIndex = 0;
             this.containerLabels.UseCompatibleStateImageBehavior = false;
             this.containerLabels.View = System.Windows.Forms.View.Details;
@@ -147,94 +140,47 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.Stats);
             this.tabControl1.Controls.Add(this.Logs);
             this.tabControl1.Controls.Add(Labels);
             this.tabControl1.Controls.Add(this.Mounts);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(708, 435);
+            this.tabControl1.Size = new System.Drawing.Size(974, 652);
             this.tabControl1.TabIndex = 0;
-            // 
-            // Stats
-            // 
-            this.Stats.Controls.Add(this.chart1);
-            this.Stats.Location = new System.Drawing.Point(4, 25);
-            this.Stats.Margin = new System.Windows.Forms.Padding(2);
-            this.Stats.Name = "Stats";
-            this.Stats.Size = new System.Drawing.Size(700, 406);
-            this.Stats.TabIndex = 2;
-            this.Stats.Text = "Stats";
-            this.Stats.UseVisualStyleBackColor = true;
-            // 
-            // chart1
-            // 
-            chartArea1.AxisX.LabelStyle.Enabled = false;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DimGray;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.BorderColor = System.Drawing.Color.Maroon;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.ForeColor = System.Drawing.Color.Gray;
-            legend1.HeaderSeparatorColor = System.Drawing.Color.Gray;
-            legend1.ItemColumnSeparatorColor = System.Drawing.Color.Maroon;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 0);
-            this.chart1.Margin = new System.Windows.Forms.Padding(2);
-            this.chart1.Name = "chart1";
-            series1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            series1.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "CPU";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(700, 406);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
             // 
             // Logs
             // 
+            this.Logs.Controls.Add(this.labelCpuUsage);
+            this.Logs.Controls.Add(this.label1);
             this.Logs.Controls.Add(this.richLogs);
-            this.Logs.Location = new System.Drawing.Point(4, 25);
-            this.Logs.Margin = new System.Windows.Forms.Padding(2);
+            this.Logs.Location = new System.Drawing.Point(4, 33);
             this.Logs.Name = "Logs";
-            this.Logs.Size = new System.Drawing.Size(700, 406);
+            this.Logs.Size = new System.Drawing.Size(966, 615);
             this.Logs.TabIndex = 3;
             this.Logs.Text = "Logs";
             this.Logs.UseVisualStyleBackColor = true;
             // 
             // richLogs
             // 
+            this.richLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richLogs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richLogs.Location = new System.Drawing.Point(0, 0);
-            this.richLogs.Margin = new System.Windows.Forms.Padding(2);
+            this.richLogs.Location = new System.Drawing.Point(0, 116);
             this.richLogs.Name = "richLogs";
             this.richLogs.ReadOnly = true;
-            this.richLogs.Size = new System.Drawing.Size(700, 406);
+            this.richLogs.Size = new System.Drawing.Size(966, 499);
             this.richLogs.TabIndex = 0;
             this.richLogs.Text = "";
             // 
             // Mounts
             // 
             this.Mounts.Controls.Add(this.containerMounts);
-            this.Mounts.Location = new System.Drawing.Point(4, 25);
-            this.Mounts.Margin = new System.Windows.Forms.Padding(2);
+            this.Mounts.Location = new System.Drawing.Point(4, 33);
             this.Mounts.Name = "Mounts";
-            this.Mounts.Padding = new System.Windows.Forms.Padding(2);
-            this.Mounts.Size = new System.Drawing.Size(700, 406);
+            this.Mounts.Padding = new System.Windows.Forms.Padding(3);
+            this.Mounts.Size = new System.Drawing.Size(966, 615);
             this.Mounts.TabIndex = 1;
             this.Mounts.Text = "Mounts";
             this.Mounts.UseVisualStyleBackColor = true;
@@ -257,30 +203,45 @@
             this.containerMounts.GridLines = true;
             this.containerMounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.containerMounts.HideSelection = false;
-            this.containerMounts.Location = new System.Drawing.Point(2, 2);
-            this.containerMounts.Margin = new System.Windows.Forms.Padding(2);
+            this.containerMounts.Location = new System.Drawing.Point(3, 3);
             this.containerMounts.MultiSelect = false;
             this.containerMounts.Name = "containerMounts";
             this.containerMounts.ShowGroups = false;
-            this.containerMounts.Size = new System.Drawing.Size(696, 402);
+            this.containerMounts.Size = new System.Drawing.Size(960, 609);
             this.containerMounts.TabIndex = 1;
             this.containerMounts.UseCompatibleStateImageBehavior = false;
             this.containerMounts.View = System.Windows.Forms.View.Details;
             this.containerMounts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.containerMounts_MouseDoubleClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "CPU:";
+            // 
+            // labelCpuUsage
+            // 
+            this.labelCpuUsage.AutoSize = true;
+            this.labelCpuUsage.Location = new System.Drawing.Point(453, 295);
+            this.labelCpuUsage.Name = "labelCpuUsage";
+            this.labelCpuUsage.Size = new System.Drawing.Size(41, 25);
+            this.labelCpuUsage.TabIndex = 2;
+            this.labelCpuUsage.Text = "0%";
+            // 
             // DockerContainerDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DockerContainerDetails";
-            this.Size = new System.Drawing.Size(708, 435);
+            this.Size = new System.Drawing.Size(974, 652);
             Labels.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.Stats.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.Logs.ResumeLayout(false);
+            this.Logs.PerformLayout();
             this.Mounts.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -292,9 +253,9 @@
       private System.Windows.Forms.TabPage Mounts;
       private System.Windows.Forms.ListView containerLabels;
       private System.Windows.Forms.ListView containerMounts;
-      private System.Windows.Forms.TabPage Stats;
-      private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
       private System.Windows.Forms.TabPage Logs;
       private System.Windows.Forms.RichTextBox richLogs;
+      private System.Windows.Forms.Label labelCpuUsage;
+      private System.Windows.Forms.Label label1;
    }
 }

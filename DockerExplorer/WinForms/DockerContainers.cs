@@ -69,7 +69,7 @@ namespace DockerExplorer.WinForms
          ReloadContainers();
       }
 
-      private async void containersList_SelectedIndexChanged(object sender, EventArgs e)
+      private void containersList_SelectedIndexChanged(object sender, EventArgs e)
       {
          if (containersList.SelectedItems.Count == 0)
          {
