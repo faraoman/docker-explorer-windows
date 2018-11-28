@@ -77,7 +77,25 @@ namespace DockerExplorer.WinForms
          txtRepository.Text = image.Repository;
          txtTag.Text = image.Tag;
 
-         await _presenter.GetImageHistoryAsync(image.Id);
+         //popular image history
+         IReadOnlyCollection<DockerImageHistory> history = await _presenter.GetImageHistoryAsync(image.Id);
+
+         listContainerHistory.Items.Clear();
+         foreach(DockerImageHistory item in history)
+         {
+            listContainerHistory.Items.Add(
+               new ListViewItem(new[]
+               {
+                  item.Id,
+                  item.Created.ToString(),
+                  item.CreatedBy,
+                  item.Size.ToFileSizeUiString(),
+                  item.Comment,
+                  item.Tags == null ? string.Empty : string.Join(", ", item.Tags)
+               }));
+         }
+         listContainerHistory.AutoAlign();
+
       }
    }
 }

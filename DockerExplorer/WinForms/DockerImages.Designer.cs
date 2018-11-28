@@ -34,6 +34,13 @@
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Splitter splitter2;
             System.Windows.Forms.Label label5;
+            System.Windows.Forms.GroupBox groupBox1;
+            System.Windows.Forms.ColumnHeader ID;
+            System.Windows.Forms.ColumnHeader Created;
+            System.Windows.Forms.ColumnHeader By;
+            System.Windows.Forms.ColumnHeader Size;
+            System.Windows.Forms.ColumnHeader Comment;
+            System.Windows.Forms.ColumnHeader Tags;
             this.treeDockerImages = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitter1 = new System.Windows.Forms.Splitter();
@@ -42,13 +49,22 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtRepository = new System.Windows.Forms.TextBox();
             this.txtTag = new System.Windows.Forms.TextBox();
+            this.listContainerHistory = new System.Windows.Forms.ListView();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             splitter2 = new System.Windows.Forms.Splitter();
             label5 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            Created = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            By = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            Comment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            Tags = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
+            groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -107,6 +123,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(groupBox1);
             this.panel1.Controls.Add(this.txtTag);
             this.panel1.Controls.Add(label5);
             this.panel1.Controls.Add(this.txtRepository);
@@ -191,6 +208,63 @@
             this.txtTag.Size = new System.Drawing.Size(764, 29);
             this.txtTag.TabIndex = 11;
             // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            groupBox1.Controls.Add(this.listContainerHistory);
+            groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            groupBox1.Location = new System.Drawing.Point(22, 235);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(875, 819);
+            groupBox1.TabIndex = 12;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "History";
+            // 
+            // listContainerHistory
+            // 
+            this.listContainerHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listContainerHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            ID,
+            Created,
+            By,
+            Size,
+            Comment,
+            Tags});
+            this.listContainerHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listContainerHistory.GridLines = true;
+            this.listContainerHistory.Location = new System.Drawing.Point(3, 25);
+            this.listContainerHistory.Name = "listContainerHistory";
+            this.listContainerHistory.Size = new System.Drawing.Size(869, 791);
+            this.listContainerHistory.TabIndex = 0;
+            this.listContainerHistory.UseCompatibleStateImageBehavior = false;
+            this.listContainerHistory.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            ID.Text = "ID";
+            // 
+            // Created
+            // 
+            Created.Text = "Created";
+            // 
+            // By
+            // 
+            By.Text = "By";
+            // 
+            // Size
+            // 
+            Size.Text = "Size";
+            // 
+            // Comment
+            // 
+            Comment.Text = "Comment";
+            // 
+            // Tags
+            // 
+            Tags.Text = "Tags";
+            // 
             // DockerImages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -202,6 +276,7 @@
             this.Size = new System.Drawing.Size(1407, 1068);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
       }
@@ -216,5 +291,6 @@
       private System.Windows.Forms.Splitter splitter1;
       private System.Windows.Forms.TextBox txtTag;
       private System.Windows.Forms.TextBox txtRepository;
+      private System.Windows.Forms.ListView listContainerHistory;
    }
 }

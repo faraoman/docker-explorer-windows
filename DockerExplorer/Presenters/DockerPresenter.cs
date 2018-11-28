@@ -48,9 +48,11 @@ namespace DockerExplorer.Presenters
          return roots;
       }
 
-      public async Task GetImageHistoryAsync(string imageName)
+      public async Task<IReadOnlyCollection<DockerImageHistory>> GetImageHistoryAsync(string imageName)
       {
          IList<ImageHistoryResponse> response = await Client.Images.GetImageHistoryAsync(imageName);
+
+         return response.Select(r => new DockerImageHistory(r)).ToList();
       }
 
       public async Task<IReadOnlyCollection<DockerContainer>> GetAllContainersAsync()

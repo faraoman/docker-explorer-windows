@@ -28,10 +28,7 @@ namespace DockerExplorer.WinForms
                containerLabels.Items.Add(
                   new ListViewItem(new[] { label.Key, label.Value }, 0));
             }
-            foreach(ColumnHeader column in containerLabels.Columns)
-            {
-               column.Width = -2;
-            }
+            containerLabels.AutoAlign();
 
             //set mounts
             containerMounts.Items.Clear();
@@ -51,10 +48,7 @@ namespace DockerExplorer.WinForms
                   }, 0)
                   { Tag = mount });
             }
-            foreach(ColumnHeader column in containerMounts.Columns)
-            {
-               column.Width = -2;
-            }
+            containerMounts.AutoAlign();
 
             //listen for updates
             Presenter.GetContainerDetailsAsync(value.Id, this);

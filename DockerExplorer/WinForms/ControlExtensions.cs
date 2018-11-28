@@ -23,5 +23,13 @@ namespace DockerExplorer.WinForms
 
          MessageBox.Show(control, "Docker Explorer", ex.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
+
+      public static void AutoAlign(this ListView listView)
+      {
+         foreach (ColumnHeader column in listView.Columns)
+         {
+            column.Width = -2;
+         }
+      }
    }
 }
