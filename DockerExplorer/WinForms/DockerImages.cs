@@ -49,7 +49,7 @@ namespace DockerExplorer.WinForms
 
          foreach (DockerImage image in images)
          {
-            var node = new TreeNode(image.Tag)
+            var node = new TreeNode(image.Name)
             {
                Tag = image
             };
@@ -66,7 +66,7 @@ namespace DockerExplorer.WinForms
       }
 
 
-      private void treeDockerImages_AfterSelect(object sender, TreeViewEventArgs e)
+      private async void treeDockerImages_AfterSelect(object sender, TreeViewEventArgs e)
       {
          if (treeDockerImages.SelectedNode == null || !(treeDockerImages.SelectedNode.Tag is DockerImage image))
             return;
@@ -74,7 +74,10 @@ namespace DockerExplorer.WinForms
          txtId.Text = image.Id;
          txtParentId.Text = image.ParentId;
          txtSize.Text = image.Size.ToFileSizeUiString();
-         txtTags.Text = string.Join(Environment.NewLine, image.Tag);
+         txtRepository.Text = image.Repository;
+         txtTag.Text = image.Tag;
+
+         await _presenter.GetImageHistoryAsync(image.Id);
       }
    }
 }

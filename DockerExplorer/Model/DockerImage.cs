@@ -15,6 +15,18 @@ namespace DockerExplorer.Model
          ParentId = parentId;
          Tag = tag;
          Size = size;
+
+         int idx = tag.IndexOf(':');
+         if(idx == -1)
+         {
+            Repository = Tag;
+            Tag = "latest";
+         }
+         else
+         {
+            Repository = tag.Substring(0, idx);
+            Tag = tag.Substring(idx + 1);
+         }
       }
 
       internal static IEnumerable<DockerImage> CreateMany(ImagesListResponse wr)
@@ -28,7 +40,11 @@ namespace DockerExplorer.Model
 
       public string Id { get; }
 
+      public string Name => $"{Repository}:{Tag}";
+
       public string ParentId { get; }
+
+      public string Repository { get; }
 
       public string Tag { get; }
 

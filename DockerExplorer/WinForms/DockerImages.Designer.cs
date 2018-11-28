@@ -33,29 +33,32 @@
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Splitter splitter2;
+            System.Windows.Forms.Label label5;
             this.treeDockerImages = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.txtTags = new System.Windows.Forms.TextBox();
             this.txtSize = new System.Windows.Forms.TextBox();
             this.txtParentId = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.txtRepository = new System.Windows.Forms.TextBox();
+            this.txtTag = new System.Windows.Forms.TextBox();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             splitter2 = new System.Windows.Forms.Splitter();
+            label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(64, 136);
+            label4.Location = new System.Drawing.Point(17, 136);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(63, 25);
+            label4.Size = new System.Drawing.Size(110, 25);
             label4.TabIndex = 6;
-            label4.Text = "Tags:";
+            label4.Text = "Repository:";
             // 
             // label3
             // 
@@ -104,8 +107,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtTag);
+            this.panel1.Controls.Add(label5);
+            this.panel1.Controls.Add(this.txtRepository);
             this.panel1.Controls.Add(this.splitter1);
-            this.panel1.Controls.Add(this.txtTags);
             this.panel1.Controls.Add(label4);
             this.panel1.Controls.Add(this.txtSize);
             this.panel1.Controls.Add(label3);
@@ -127,23 +132,13 @@
             this.splitter1.TabIndex = 8;
             this.splitter1.TabStop = false;
             // 
-            // txtTags
-            // 
-            this.txtTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTags.Location = new System.Drawing.Point(133, 136);
-            this.txtTags.Multiline = true;
-            this.txtTags.Name = "txtTags";
-            this.txtTags.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTags.Size = new System.Drawing.Size(764, 215);
-            this.txtTags.TabIndex = 7;
-            // 
             // txtSize
             // 
             this.txtSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSize.Location = new System.Drawing.Point(134, 94);
             this.txtSize.Name = "txtSize";
+            this.txtSize.ReadOnly = true;
             this.txtSize.Size = new System.Drawing.Size(764, 29);
             this.txtSize.TabIndex = 5;
             // 
@@ -153,6 +148,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtParentId.Location = new System.Drawing.Point(133, 52);
             this.txtParentId.Name = "txtParentId";
+            this.txtParentId.ReadOnly = true;
             this.txtParentId.Size = new System.Drawing.Size(764, 29);
             this.txtParentId.TabIndex = 3;
             // 
@@ -162,8 +158,38 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtId.Location = new System.Drawing.Point(134, 12);
             this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(764, 29);
             this.txtId.TabIndex = 2;
+            // 
+            // txtRepository
+            // 
+            this.txtRepository.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRepository.Location = new System.Drawing.Point(133, 136);
+            this.txtRepository.Name = "txtRepository";
+            this.txtRepository.ReadOnly = true;
+            this.txtRepository.Size = new System.Drawing.Size(764, 29);
+            this.txtRepository.TabIndex = 9;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(70, 180);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(53, 25);
+            label5.TabIndex = 10;
+            label5.Text = "Tag:";
+            // 
+            // txtTag
+            // 
+            this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTag.Location = new System.Drawing.Point(134, 179);
+            this.txtTag.Name = "txtTag";
+            this.txtTag.ReadOnly = true;
+            this.txtTag.Size = new System.Drawing.Size(764, 29);
+            this.txtTag.TabIndex = 11;
             // 
             // DockerImages
             // 
@@ -184,10 +210,11 @@
 
       private System.Windows.Forms.TreeView treeDockerImages;
       private System.Windows.Forms.Panel panel1;
-      private System.Windows.Forms.TextBox txtTags;
       private System.Windows.Forms.TextBox txtSize;
       private System.Windows.Forms.TextBox txtParentId;
       private System.Windows.Forms.TextBox txtId;
       private System.Windows.Forms.Splitter splitter1;
+      private System.Windows.Forms.TextBox txtTag;
+      private System.Windows.Forms.TextBox txtRepository;
    }
 }
