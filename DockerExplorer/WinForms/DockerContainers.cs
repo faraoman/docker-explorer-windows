@@ -60,7 +60,7 @@ namespace DockerExplorer.WinForms
          }
          catch(Exception ex)
          {
-            MessageBox.Show(ex.ToString());
+            this.Handle(ex);
          }
       }
 

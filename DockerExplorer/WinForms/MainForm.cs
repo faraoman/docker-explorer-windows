@@ -18,11 +18,6 @@ namespace DockerExplorer
          InitializeComponent();
 
          this.AutoScaleMode = AutoScaleMode.Dpi;
-
-         if(!this.IsInDesignMode())
-         {
-            this.Controls.Add(new DockerServerControl() { Dock = DockStyle.Fill });
-         }
       }
 
       private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

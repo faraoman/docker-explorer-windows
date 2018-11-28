@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace DockerExplorer.WinForms
 {
@@ -13,6 +14,14 @@ namespace DockerExplorer.WinForms
             control = control.Parent;
          }
          return false;
+      }
+
+      public static void Handle(this Control control, Exception ex)
+      {
+         if (control.IsInDesignMode())
+            return;
+
+         MessageBox.Show(control, "Docker Explorer", ex.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
    }
 }
