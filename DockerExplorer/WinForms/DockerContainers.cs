@@ -73,8 +73,11 @@ namespace DockerExplorer.WinForms
       {
          if (containersList.SelectedItems.Count == 0)
          {
+            deleteContainer.Enabled = false;
             return;
          }
+
+         //deleteContainer.Enabled = true;
 
          var container = containersList.SelectedItems[0].Tag as DockerContainer;
 
@@ -92,6 +95,11 @@ namespace DockerExplorer.WinForms
             default:
                return Color.White;
          }
+      }
+
+      private void deleteContainer_Click(object sender, EventArgs e)
+      {
+
       }
    }
 }
