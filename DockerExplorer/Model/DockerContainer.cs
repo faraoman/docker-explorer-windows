@@ -21,6 +21,7 @@ namespace DockerExplorer.Model
          Created = wr.Created;
          Labels = new Dictionary<string, string>(wr.Labels);
          Mounts = wr.Mounts == null ? new List<MountPoint>() : new List<MountPoint>(wr.Mounts);
+         Ports = wr.Ports == null ? new List<Port>() : new List<Port>(wr.Ports);
       }
 
       public string Id { get; }
@@ -44,5 +45,7 @@ namespace DockerExplorer.Model
       public IDictionary<string, string> Labels { get; }
 
       public List<MountPoint> Mounts { get; }
+
+      public List<Port> Ports { get; }
    }
 }

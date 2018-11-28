@@ -7,12 +7,14 @@ using DockerExplorer.Presenters;
 using System;
 using System.Threading;
 using NetBox.Extensions;
+using System.Linq;
 
 namespace DockerExplorer.WinForms
 {
    public partial class DockerContainerDetails : UserControl, IProgress<ContainerStatsResponse>, IProgress<string>
    {
-      private CancellationTokenSource _cts;
+      private CancellationTokenSource _cts = new CancellationTokenSource();
+      private int _logLinesCount;
 
       public DockerContainerDetails()
       {
@@ -33,6 +35,7 @@ namespace DockerExplorer.WinForms
                   new ListViewItem(new[] { label.Key, label.Value }, 0));
             }
             containerLabels.AutoAlign();
+            tabLabels.Text = $"Labels ({value.Labels.Count})";
 
             //set mounts
             containerMounts.Items.Clear();
@@ -53,6 +56,27 @@ namespace DockerExplorer.WinForms
                   { Tag = mount });
             }
             containerMounts.AutoAlign();
+            tabMounts.Text = $"Mounts ({value.Mounts.Count})";
+
+            //set ports
+            containerPorts.Items.Clear();
+            foreach(Port port in value.Ports)
+            {
+               containerPorts.Items.Add(
+                  new ListViewItem(new[]
+                  {
+                     port.IP,
+                     port.PrivatePort.ToString(),
+                     port.PublicPort.ToString(),
+                     port.Type
+                  }));
+            }
+            containerPorts.AutoAlign();
+            tabPorts.Text = $"Ports ({value.Ports.Count})";
+
+            //clear the rest
+            txtLogs.Clear();
+            _logLinesCount = 0;
 
             //listen for updates
             if(_cts != null)
@@ -102,7 +126,15 @@ namespace DockerExplorer.WinForms
 
       public void Report(string value)
       {
-         richLogs.AppendText(value);
+         //convert to printable string
+         char[] pChars = value.ToCharArray().Where(c => !char.IsControl(c) || char.IsWhiteSpace(c)).ToArray();
+         string pValue = new string(pChars, 0, pChars.Length);
+         pValue += Environment.NewLine;
+
+         txtLogs.AppendText(pValue);
+         _logLinesCount += 1;
+
+         tabLogs.Text = $"Logs ({_logLinesCount})";
       }
    }
 }

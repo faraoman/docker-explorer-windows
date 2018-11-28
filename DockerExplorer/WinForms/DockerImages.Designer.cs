@@ -44,12 +44,14 @@
             this.listContainerHistory = new System.Windows.Forms.ListView();
             this.treeDockerImages = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.linkParentId = new System.Windows.Forms.LinkLabel();
             this.txtTag = new System.Windows.Forms.TextBox();
             this.txtRepository = new System.Windows.Forms.TextBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.txtSize = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.linkParentId = new System.Windows.Forms.LinkLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.refreshImages = new System.Windows.Forms.ToolStripButton();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -65,6 +67,7 @@
             Tags = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -105,9 +108,9 @@
             // 
             // splitter2
             // 
-            splitter2.Location = new System.Drawing.Point(484, 0);
+            splitter2.Location = new System.Drawing.Point(484, 47);
             splitter2.Name = "splitter2";
-            splitter2.Size = new System.Drawing.Size(7, 1068);
+            splitter2.Size = new System.Drawing.Size(7, 1021);
             splitter2.TabIndex = 4;
             splitter2.TabStop = false;
             // 
@@ -129,7 +132,7 @@
             groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             groupBox1.Location = new System.Drawing.Point(22, 235);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(875, 819);
+            groupBox1.Size = new System.Drawing.Size(875, 772);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "History";
@@ -149,7 +152,7 @@
             this.listContainerHistory.GridLines = true;
             this.listContainerHistory.Location = new System.Drawing.Point(3, 25);
             this.listContainerHistory.Name = "listContainerHistory";
-            this.listContainerHistory.Size = new System.Drawing.Size(869, 791);
+            this.listContainerHistory.Size = new System.Drawing.Size(869, 744);
             this.listContainerHistory.TabIndex = 0;
             this.listContainerHistory.UseCompatibleStateImageBehavior = false;
             this.listContainerHistory.View = System.Windows.Forms.View.Details;
@@ -182,9 +185,9 @@
             // 
             this.treeDockerImages.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeDockerImages.HideSelection = false;
-            this.treeDockerImages.Location = new System.Drawing.Point(0, 0);
+            this.treeDockerImages.Location = new System.Drawing.Point(0, 47);
             this.treeDockerImages.Name = "treeDockerImages";
-            this.treeDockerImages.Size = new System.Drawing.Size(484, 1068);
+            this.treeDockerImages.Size = new System.Drawing.Size(484, 1021);
             this.treeDockerImages.TabIndex = 1;
             this.treeDockerImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDockerImages_AfterSelect);
             // 
@@ -203,10 +206,21 @@
             this.panel1.Controls.Add(label2);
             this.panel1.Controls.Add(label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(491, 0);
+            this.panel1.Location = new System.Drawing.Point(491, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(916, 1068);
+            this.panel1.Size = new System.Drawing.Size(916, 1021);
             this.panel1.TabIndex = 3;
+            // 
+            // linkParentId
+            // 
+            this.linkParentId.AutoSize = true;
+            this.linkParentId.Location = new System.Drawing.Point(133, 52);
+            this.linkParentId.Name = "linkParentId";
+            this.linkParentId.Size = new System.Drawing.Size(82, 25);
+            this.linkParentId.TabIndex = 13;
+            this.linkParentId.TabStop = true;
+            this.linkParentId.Text = "parent...";
+            this.linkParentId.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkParentId_LinkClicked);
             // 
             // txtTag
             // 
@@ -232,7 +246,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 1068);
+            this.splitter1.Size = new System.Drawing.Size(3, 1021);
             this.splitter1.TabIndex = 8;
             this.splitter1.TabStop = false;
             // 
@@ -256,16 +270,27 @@
             this.txtId.Size = new System.Drawing.Size(764, 29);
             this.txtId.TabIndex = 2;
             // 
-            // linkParentId
+            // toolStrip1
             // 
-            this.linkParentId.AutoSize = true;
-            this.linkParentId.Location = new System.Drawing.Point(133, 52);
-            this.linkParentId.Name = "linkParentId";
-            this.linkParentId.Size = new System.Drawing.Size(82, 25);
-            this.linkParentId.TabIndex = 13;
-            this.linkParentId.TabStop = true;
-            this.linkParentId.Text = "parent...";
-            this.linkParentId.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkParentId_LinkClicked);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshImages});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1407, 47);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // refreshImages
+            // 
+            this.refreshImages.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshImages.Image = global::DockerExplorer.Properties.Resources.refresh;
+            this.refreshImages.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshImages.Name = "refreshImages";
+            this.refreshImages.Size = new System.Drawing.Size(44, 44);
+            this.refreshImages.Text = "toolStripButton1";
+            this.refreshImages.ToolTipText = "refresh images";
+            this.refreshImages.Click += new System.EventHandler(this.refreshImages_Click);
             // 
             // DockerImages
             // 
@@ -274,12 +299,16 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(splitter2);
             this.Controls.Add(this.treeDockerImages);
+            this.Controls.Add(this.toolStrip1);
             this.Name = "DockerImages";
             this.Size = new System.Drawing.Size(1407, 1068);
             groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
       }
 
@@ -294,5 +323,7 @@
       private System.Windows.Forms.TextBox txtRepository;
       private System.Windows.Forms.ListView listContainerHistory;
       private System.Windows.Forms.LinkLabel linkParentId;
+      private System.Windows.Forms.ToolStrip toolStrip1;
+      private System.Windows.Forms.ToolStripButton refreshImages;
    }
 }

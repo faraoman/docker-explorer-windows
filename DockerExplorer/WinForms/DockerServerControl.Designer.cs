@@ -47,7 +47,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList1;
-            this.tabControl1.ItemSize = new System.Drawing.Size(150, 40);
+            this.tabControl1.ItemSize = new System.Drawing.Size(150, 50);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -59,10 +59,10 @@
             // 
             this.tabPage2.Controls.Add(this.dockerContainers1);
             this.tabPage2.ImageIndex = 1;
-            this.tabPage2.Location = new System.Drawing.Point(4, 44);
+            this.tabPage2.Location = new System.Drawing.Point(4, 54);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1165, 708);
+            this.tabPage2.Size = new System.Drawing.Size(1165, 698);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Containers";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             this.dockerContainers1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockerContainers1.Location = new System.Drawing.Point(3, 3);
             this.dockerContainers1.Name = "dockerContainers1";
-            this.dockerContainers1.Size = new System.Drawing.Size(1159, 702);
+            this.dockerContainers1.Size = new System.Drawing.Size(1159, 692);
             this.dockerContainers1.TabIndex = 0;
             // 
             // tabPage1

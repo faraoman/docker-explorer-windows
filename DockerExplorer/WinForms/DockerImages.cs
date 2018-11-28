@@ -132,6 +132,7 @@ namespace DockerExplorer.WinForms
          if (node != null)
          {
             treeDockerImages.SelectedNode = node;
+            _lastSelectedImageId = ((DockerImage)node.Tag).ShortId;
          }
       }
 
@@ -154,6 +155,11 @@ namespace DockerExplorer.WinForms
          }
 
          return null;
+      }
+
+      private void refreshImages_Click(object sender, EventArgs e)
+      {
+         ReloadImages();
       }
    }
 }
