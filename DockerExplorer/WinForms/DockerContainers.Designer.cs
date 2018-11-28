@@ -128,7 +128,7 @@
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Top;
             this.splitter1.Location = new System.Drawing.Point(0, 315);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1065, 3);
+            this.splitter1.Size = new System.Drawing.Size(1065, 6);
             this.splitter1.TabIndex = 7;
             this.splitter1.TabStop = false;
             // 

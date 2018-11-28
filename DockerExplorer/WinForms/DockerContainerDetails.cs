@@ -5,11 +5,15 @@ using Docker.DotNet.Models;
 using System.Diagnostics;
 using DockerExplorer.Presenters;
 using System;
+using System.Threading;
+using NetBox.Extensions;
 
 namespace DockerExplorer.WinForms
 {
    public partial class DockerContainerDetails : UserControl, IProgress<ContainerStatsResponse>, IProgress<string>
    {
+      private CancellationTokenSource _cts;
+
       public DockerContainerDetails()
       {
          InitializeComponent();
@@ -51,8 +55,13 @@ namespace DockerExplorer.WinForms
             containerMounts.AutoAlign();
 
             //listen for updates
-            //Presenter.GetContainerDetailsAsync(value.Id, this);
-            Presenter.GetContainerLogs(value.Id, this);
+            if(_cts != null)
+            {
+               _cts.Cancel();
+               _cts = new CancellationTokenSource();
+            }
+            Presenter.GetContainerDetailsAsync(value.Id, this, _cts.Token).Forget();
+            Presenter.GetContainerLogs(value.Id, this, _cts.Token).Forget();
          }
       }
 
@@ -87,6 +96,8 @@ namespace DockerExplorer.WinForms
 
          _prevCpu = value.CPUStats.CPUUsage.TotalUsage;
          _prevSystem = value.CPUStats.SystemUsage;
+
+         lblCpu.Text = $"{cpu} %";
       }
 
       public void Report(string value)
