@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <!-- Required elements-->
+      <id>DockerExplorer</id>
+      <version>1.0.0</version>
+      <title>Docker Explorer</title>
+      <description>Docker Explorer for Windows</description>
+      <authors>Ivan Gavryliuk</authors>
+   </metadata>
+   <files>
+      <file src="DockerExplorer\bin\x86\Debug\*" target="lib\net45"/>
+   </files>
+</package>
