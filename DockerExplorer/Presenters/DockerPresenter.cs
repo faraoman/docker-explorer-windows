@@ -14,10 +14,24 @@ namespace DockerExplorer.Presenters
    class DockerPresenter
    {
       private DockerClient _client;
+      private static DockerPresenter _instance;
 
-      public DockerPresenter()
+      private DockerPresenter()
       {
 
+      }
+
+      public static DockerPresenter Instance
+      {
+         get
+         {
+            if(_instance == null)
+            {
+               _instance = new DockerPresenter();
+            }
+
+            return _instance;
+         }
       }
 
       private DockerClient Client
@@ -31,6 +45,20 @@ namespace DockerExplorer.Presenters
 
             return _client;
          }
+      }
+
+      public async Task<bool> IsRunningAsync()
+      {
+         try
+         {
+            await Client.Images.ListImagesAsync(new ImagesListParameters { All = false });
+         }
+         catch(TimeoutException)
+         {
+            return false;
+         }
+
+         return true;
       }
 
       public async Task<IReadOnlyCollection<DockerImage>> GetAllImagesAsync()

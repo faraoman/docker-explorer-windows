@@ -20,7 +20,7 @@ namespace DockerExplorer.WinForms
       {
          InitializeComponent();
 
-         _presenter = new DockerPresenter();
+         _presenter = DockerPresenter.Instance;
 
          if (!this.IsInDesignMode())
          {

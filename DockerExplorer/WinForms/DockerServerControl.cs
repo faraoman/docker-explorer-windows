@@ -16,13 +16,9 @@ namespace DockerExplorer
 {
    public partial class DockerServerControl : UserControl
    {
-      private readonly DockerPresenter _presenter;
-
       public DockerServerControl()
       {
          InitializeComponent();
-
-         _presenter = new DockerPresenter();
       }
    }
 }
