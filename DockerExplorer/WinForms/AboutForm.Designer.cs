@@ -34,6 +34,7 @@
             this.linkGitHub = new System.Windows.Forms.LinkLabel();
             this.linkTwitter = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             this.pictureBox1.Image = global::DockerExplorer.Properties.Resources.docker;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(16, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(275, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -102,11 +103,21 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "follow me on Twitter";
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(808, 38);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(48, 25);
+            this.lblVersion.TabIndex = 6;
+            this.lblVersion.Text = "v1.x";
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1136, 345);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.linkTwitter);
             this.Controls.Add(this.linkGitHub);
@@ -114,7 +125,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AboutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Docker Explorer";
@@ -132,5 +143,6 @@
       private System.Windows.Forms.LinkLabel linkGitHub;
       private System.Windows.Forms.LinkLabel linkTwitter;
       private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.Label lblVersion;
    }
 }

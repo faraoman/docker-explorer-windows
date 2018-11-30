@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using NetBox.Extensions;
 
 namespace DockerExplorer.WinForms
 {
@@ -16,6 +17,8 @@ namespace DockerExplorer.WinForms
       public AboutForm()
       {
          InitializeComponent();
+
+         lblVersion.Text = typeof(AboutForm).FileVersion().ToString();
       }
 
       private void linkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
