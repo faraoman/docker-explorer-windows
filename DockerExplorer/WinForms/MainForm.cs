@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DockerExplorer.WinForms;
+using NetBox.Extensions;
 
 namespace DockerExplorer
 {
@@ -18,6 +19,9 @@ namespace DockerExplorer
          InitializeComponent();
 
          this.AutoScaleMode = AutoScaleMode.Dpi;
+
+         //set version number in title
+         this.Text = $"{Text} v{typeof(MainForm).FileVersion()}";
       }
 
       private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
