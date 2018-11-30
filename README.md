@@ -2,14 +2,20 @@
 
 ## Why
 
-To create a native Windows tool for managing docker (local instance only in v1).
+I wanted a fast, native Windows applicaton to explore lock Docker Desktop content. This is a Windows Forms application (old tech, but reliable and extremely fast).
 
 ## Status
 
-Really basic, mostly for my own needs.
+Working version, features are implemented on demand.
+
+![Images History](img/images-history.png)
 
 ## Features
 
-Shows local images and layer history:
+- Browse containers, including logs, labels, mounts and ports
+- Browse images in hierarchy view, including image history
 
-![Images History](http://i.isolineltd.com/github/de-screenvideo.gif)
+## Installing
+
+The latest version can be installed [from here](http://i.isolineltd.com/dockerexplorer/Setup.exe). The updates are installed automatically via [Squirrel.Windows](https://github.com/Squirrel/Squirrel.Windows).
+
