@@ -10,6 +10,6 @@
       <iconUrl>http://i.isolineltd.com/dockerexplorer/docker.ico</iconUrl>
    </metadata>
    <files>
-      <file src="DockerExplorer\bin\x86\Debug\*" target="lib\net45"/>
+      <file src="DockerExplorer\bin\x86\Release\*" target="lib\net45"/>
    </files>
 </package>
