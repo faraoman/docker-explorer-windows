@@ -15,6 +15,8 @@ namespace DockerExplorer
       [STAThread]
       static async Task Main()
       {
+
+         //runs Squirrel update
 #if RELEASE
          using (var mgr = new UpdateManager("http://i.isolineltd.com/dockerexplorer"))
          {
