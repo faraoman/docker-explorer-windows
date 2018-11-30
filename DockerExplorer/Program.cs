@@ -50,7 +50,14 @@ namespace DockerExplorer
             return;
          }
 
+         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
          Application.Run(new MainForm());
+      }
+
+      private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+      {
+         log.Error("fatal", e.ExceptionObject);
       }
    }
 }
