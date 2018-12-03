@@ -19,6 +19,7 @@ namespace DockerExplorer
          InitializeComponent();
 
          this.AutoScaleMode = AutoScaleMode.Dpi;
+         this.Font = SystemFonts.MessageBoxFont;
 
          //set version number in title
          this.Text = $"{Text} v{typeof(MainForm).FileVersion()}";
@@ -27,6 +28,11 @@ namespace DockerExplorer
       private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
       {
          new AboutForm().ShowDialog(this);
+      }
+
+      private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         Application.Exit();
       }
    }
 }

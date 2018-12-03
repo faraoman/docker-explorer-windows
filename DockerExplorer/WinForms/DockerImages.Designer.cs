@@ -226,20 +226,22 @@
             // 
             this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTag.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTag.Location = new System.Drawing.Point(134, 179);
             this.txtTag.Name = "txtTag";
             this.txtTag.ReadOnly = true;
-            this.txtTag.Size = new System.Drawing.Size(764, 29);
+            this.txtTag.Size = new System.Drawing.Size(764, 22);
             this.txtTag.TabIndex = 11;
             // 
             // txtRepository
             // 
             this.txtRepository.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRepository.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtRepository.Location = new System.Drawing.Point(133, 136);
             this.txtRepository.Name = "txtRepository";
             this.txtRepository.ReadOnly = true;
-            this.txtRepository.Size = new System.Drawing.Size(764, 29);
+            this.txtRepository.Size = new System.Drawing.Size(764, 22);
             this.txtRepository.TabIndex = 9;
             // 
             // splitter1
@@ -254,20 +256,22 @@
             // 
             this.txtSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSize.Location = new System.Drawing.Point(134, 94);
             this.txtSize.Name = "txtSize";
             this.txtSize.ReadOnly = true;
-            this.txtSize.Size = new System.Drawing.Size(764, 29);
+            this.txtSize.Size = new System.Drawing.Size(764, 22);
             this.txtSize.TabIndex = 5;
             // 
             // txtId
             // 
             this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtId.Location = new System.Drawing.Point(134, 12);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(764, 29);
+            this.txtId.Size = new System.Drawing.Size(764, 22);
             this.txtId.TabIndex = 2;
             // 
             // toolStrip1

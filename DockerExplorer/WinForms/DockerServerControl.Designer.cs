@@ -79,10 +79,10 @@
             // 
             this.tabPage1.Controls.Add(this.dockerImages1);
             this.tabPage1.ImageIndex = 0;
-            this.tabPage1.Location = new System.Drawing.Point(4, 44);
+            this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1165, 708);
+            this.tabPage1.Size = new System.Drawing.Size(1165, 698);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Images";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             this.dockerImages1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockerImages1.Location = new System.Drawing.Point(3, 3);
             this.dockerImages1.Name = "dockerImages1";
-            this.dockerImages1.Size = new System.Drawing.Size(1159, 702);
+            this.dockerImages1.Size = new System.Drawing.Size(1159, 692);
             this.dockerImages1.TabIndex = 0;
             // 
             // imageList1

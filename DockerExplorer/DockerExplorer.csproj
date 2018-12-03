@@ -168,6 +168,9 @@
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="WinForms\ControlExtensions.cs" />
+    <Compile Include="WinForms\Custom\StyledTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinForms\DockerContainerDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -251,8 +254,8 @@
   <ItemGroup>
     <Content Include="docker.ico" />
     <None Include="Resources\delete.png" />
-    <None Include="Resources\docker.png" />
     <None Include="Resources\refresh.png" />
+    <None Include="Resources\docker.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
