@@ -103,13 +103,13 @@ namespace DockerExplorer.WinForms
 
       double _prevCpu = 0;
       double _prevSystem = 0;
-      int _pointIdx = 0;
 
       public void Report(ContainerStatsResponse value)
       {
          //see https://stackoverflow.com/questions/30271942/get-docker-container-cpu-usage-as-percentage
 
          double cpu = 0;
+         double cpu2 = 0;
          double cpuDelta = value.CPUStats.CPUUsage.TotalUsage - _prevCpu;
          double systemDelta = value.CPUStats.SystemUsage - _prevSystem;
 
@@ -118,10 +118,18 @@ namespace DockerExplorer.WinForms
             cpu = (cpuDelta / systemDelta) * value.CPUStats.CPUUsage.PercpuUsage.Count * 100;
          }
 
+         if(cpuDelta > 0)
+         {
+            //cpu2 = cpuDelta * value.CPUStats.CPUUsage.PercpuUsage.Count * 100.0;
+         }
+
          _prevCpu = value.CPUStats.CPUUsage.TotalUsage;
          _prevSystem = value.CPUStats.SystemUsage;
 
          lblCpu.Text = $"{cpu} %";
+
+         //txtLogs.AppendText($"cpud: {cpuDelta}, sysd: {systemDelta}, cpu: {cpu}, cpu2: {cpu2}");
+         //txtLogs.AppendText(Environment.NewLine);
       }
 
       public void Report(string value)

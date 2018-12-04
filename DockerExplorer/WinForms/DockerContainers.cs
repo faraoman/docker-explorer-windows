@@ -91,7 +91,7 @@ namespace DockerExplorer.WinForms
 
       private async void ReloadContainers()
       {
-         if (DateTime.UtcNow - _lastUpdated > UpdateInterval)
+         if (_lastUpdated == DateTime.MinValue || DateTime.UtcNow - _lastUpdated > UpdateInterval)
          {
             try
             {
