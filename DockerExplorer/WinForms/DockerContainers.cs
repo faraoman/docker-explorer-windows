@@ -9,16 +9,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DockerExplorer.Model;
 using DockerExplorer.Presenters;
+using Humanizer;
 
 namespace DockerExplorer.WinForms
 {
    public partial class DockerContainers : UserControl
    {
       private readonly DockerPresenter _presenter;
+      private DateTime _lastUpdated = DateTime.UtcNow;
+
+      private static readonly Dictionary<string, TimeSpan> _updateTextToValue = new Dictionary<string, TimeSpan>
+      {
+         ["no refresh"] = TimeSpan.MaxValue,
+         ["1 second"] = TimeSpan.FromSeconds(1),
+         ["1 minute"] = TimeSpan.FromMinutes(1)
+      };
 
       public DockerContainers()
       {
          InitializeComponent();
+
+         comboUpdateInterval.ComboBox.DataSource = 
+            _updateTextToValue.Select(i => new TaggedString<TimeSpan>(i.Key, i.Value)).ToArray();
+         comboUpdateInterval.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+         UpdateInterval = Settings.Instance.AutoRefreshContainersInterval;
 
          _presenter = DockerPresenter.Instance;
 
@@ -28,40 +42,103 @@ namespace DockerExplorer.WinForms
          }
       }
 
+      private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         TaggedString<TimeSpan> selected = (TaggedString<TimeSpan>)comboUpdateInterval.ComboBox.SelectedValue;
+
+         Settings.Instance.AutoRefreshContainersInterval = selected.Value;
+      }
+
+      private TimeSpan UpdateInterval
+      {
+         get
+         {
+            try
+            {
+               var selected = (TaggedString<TimeSpan>)comboUpdateInterval.ComboBox.SelectedValue;
+
+               return selected.Value;
+            }
+            catch(Exception)
+            {
+               return TimeSpan.MaxValue;
+            }
+         }
+         set
+         {
+            int selected = -1;
+
+            //find item
+            int i = 0;
+            foreach(TaggedString<TimeSpan> item in comboUpdateInterval.ComboBox.Items)
+            {
+               if(item.Value == value)
+               {
+                  selected = i;
+                  break;
+               }
+               i++;
+            }
+
+            if(selected == -1)
+            {
+               selected = 0;
+            }
+
+            comboUpdateInterval.ComboBox.SelectedIndex = selected;
+         }
+      }
+
       private async void ReloadContainers()
       {
-         try
+         if (DateTime.UtcNow - _lastUpdated > UpdateInterval)
          {
-            IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
-
-            containersList.Items.Clear();
-            foreach (DockerContainer container in containers)
+            try
             {
-               containersList.Items.Add(
-                  new ListViewItem(new string[]
-                  {
+               IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
+
+               containersList.Items.Clear();
+               foreach (DockerContainer container in containers)
+               {
+                  containersList.Items.Add(
+                     new ListViewItem(new string[]
+                     {
                   container.ShortId,
                   container.Name,
                   container.Image,
                   container.Created.ToString(),
                   container.State,
                   container.Status
-                  })
-                  {
-                     Tag = container,
-                     BackColor = GetContainerStateColor(container)
-                  });
-            }
+                     })
+                     {
+                        Tag = container,
+                        BackColor = GetContainerStateColor(container)
+                     });
+               }
 
-            foreach (ColumnHeader header in containersList.Columns)
+               foreach (ColumnHeader header in containersList.Columns)
+               {
+                  header.Width = -2;
+               }
+
+               _lastUpdated = DateTime.UtcNow;
+            }
+            catch (Exception ex)
             {
-               header.Width = -2;
+               this.Handle(ex);
             }
          }
-         catch(Exception ex)
-         {
-            this.Handle(ex);
-         }
+
+         UpdateLastUpdatedLabel();
+         await Task.Delay(TimeSpan.FromSeconds(1));
+         ReloadContainers();
+      }
+
+      private void UpdateLastUpdatedLabel()
+      {
+         TimeSpan ago = DateTime.UtcNow - _lastUpdated;
+
+         //txtLastUpdated.Text = $"updated: {ago.Humanize()} ago";
       }
 
       private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
