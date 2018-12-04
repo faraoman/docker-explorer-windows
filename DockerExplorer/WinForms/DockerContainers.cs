@@ -16,7 +16,7 @@ namespace DockerExplorer.WinForms
    public partial class DockerContainers : UserControl
    {
       private readonly DockerPresenter _presenter;
-      private DateTime _lastUpdated = DateTime.UtcNow;
+      private DateTime _lastUpdated = DateTime.MinValue;
 
       private static readonly Dictionary<string, TimeSpan> _updateTextToValue = new Dictionary<string, TimeSpan>
       {
