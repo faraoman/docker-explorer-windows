@@ -178,5 +178,12 @@ namespace DockerExplorer.WinForms
       {
 
       }
+
+      private void refreshContainers_Click(object sender, EventArgs e)
+      {
+         _lastUpdated = DateTime.MinValue;
+
+         ReloadContainers();
+      }
    }
 }

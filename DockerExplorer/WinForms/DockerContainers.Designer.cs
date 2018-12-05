@@ -34,7 +34,7 @@
             System.Windows.Forms.ColumnHeader Created;
             System.Windows.Forms.ColumnHeader State;
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.refreshContainers = new System.Windows.Forms.ToolStripButton();
             this.deleteContainer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.comboUpdateInterval = new System.Windows.Forms.ToolStripComboBox();
@@ -74,7 +74,7 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.refreshContainers,
             this.deleteContainer,
             this.toolStripSeparator1,
             this.comboUpdateInterval});
@@ -85,15 +85,16 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // toolStripButton1
+            // refreshContainers
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::DockerExplorer.Properties.Resources.refresh;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(44, 44);
-            this.toolStripButton1.Text = "refreshContainersToolButton";
-            this.toolStripButton1.ToolTipText = "refresh the list of containers";
+            this.refreshContainers.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshContainers.Image = global::DockerExplorer.Properties.Resources.refresh;
+            this.refreshContainers.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshContainers.Name = "refreshContainers";
+            this.refreshContainers.Size = new System.Drawing.Size(44, 44);
+            this.refreshContainers.Text = "refreshContainersToolButton";
+            this.refreshContainers.ToolTipText = "refresh the list of containers";
+            this.refreshContainers.Click += new System.EventHandler(this.refreshContainers_Click);
             // 
             // deleteContainer
             // 
@@ -192,7 +193,7 @@
       #endregion
 
       private System.Windows.Forms.ToolStrip toolStrip1;
-      private System.Windows.Forms.ToolStripButton toolStripButton1;
+      private System.Windows.Forms.ToolStripButton refreshContainers;
       private System.Windows.Forms.ListView containersList;
       private System.Windows.Forms.ColumnHeader Status;
       private DockerContainerDetails dockerContainerDetails;
