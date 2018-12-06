@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DockerExplorer")]
+[assembly: AssemblyTitle("Docker Explorer for Windows")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DockerExplorer")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyProduct("Docker Explorer for Windoes")]
+[assembly: AssemblyCopyright("Copyright © 2018 by Ivan Gavryliuk")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
