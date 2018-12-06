@@ -74,6 +74,9 @@ namespace DockerExplorer.WinForms
             containerPorts.AutoAlign();
             tabPorts.Text = $"Ports ({value.Ports.Count})";
 
+            //set network settings
+            RenderNetworks(value);
+
             //clear the rest
             txtLogs.Clear();
             _logLinesCount = 0;
@@ -86,6 +89,27 @@ namespace DockerExplorer.WinForms
             }
             Presenter.GetContainerDetailsAsync(value.Id, this, _cts.Token).Forget();
             Presenter.GetContainerLogs(value.Id, this, _cts.Token).Forget();
+         }
+      }
+
+      private void RenderNetworks(DockerContainer container)
+      {
+         networksTabs.TabPages.Clear();
+
+         foreach(KeyValuePair<string, EndpointSettings> network in container.NetworkSettings)
+         {
+            var nc = new NetworkDetails();
+            nc.Dock = DockStyle.Fill;
+
+
+            var tab = new TabPage(network.Key);
+            tab.Name = network.Key;
+            tab.Controls.Add(nc);
+            tab.CreateControl();
+            networksTabs.TabPages.Add(tab);
+
+
+            //nc.EndpointSettings = network.Value;
          }
       }
 
@@ -109,7 +133,7 @@ namespace DockerExplorer.WinForms
          //see https://stackoverflow.com/questions/30271942/get-docker-container-cpu-usage-as-percentage
 
          double cpu = 0;
-         double cpu2 = 0;
+         //double cpu2 = 0;
          double cpuDelta = value.CPUStats.CPUUsage.TotalUsage - _prevCpu;
          double systemDelta = value.CPUStats.SystemUsage - _prevSystem;
 
@@ -126,7 +150,7 @@ namespace DockerExplorer.WinForms
          _prevCpu = value.CPUStats.CPUUsage.TotalUsage;
          _prevSystem = value.CPUStats.SystemUsage;
 
-         lblCpu.Text = $"{cpu} %";
+         //lblCpu.Text = $"{cpu} %";
 
          //txtLogs.AppendText($"cpud: {cpuDelta}, sysd: {systemDelta}, cpu: {cpu}, cpu2: {cpu2}");
          //txtLogs.AppendText(Environment.NewLine);

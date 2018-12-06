@@ -27,7 +27,8 @@ namespace DockerExplorer
             .WriteTo.AzureApplicationInsights("bb403325-5d60-47c5-8dab-ce4783b5eb2a")
             .EnrichWith.Constant(KnownProperty.Version, typeof(Program).FileVersion().ToString());
 
-         log.Event("AppStart");
+         log.Event("AppStart",
+            "ExecDir", NetPath.ExecDir);
 
          //runs Squirrel update
 #if RELEASE
@@ -51,13 +52,20 @@ namespace DockerExplorer
          }
 
          AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+         Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+         Application.ThreadException += Application_ThreadException;
 
          Application.Run(new MainForm());
       }
 
+      private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+      {
+         log.Error("fatal thread exception", e.Exception);
+      }
+
       private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
       {
-         log.Error("fatal", e.ExceptionObject);
+         log.Error("fatal domain exception", e.ExceptionObject);
       }
    }
 }

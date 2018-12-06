@@ -48,14 +48,16 @@
             this.containerLabels = new System.Windows.Forms.ListView();
             this.tabs = new System.Windows.Forms.TabControl();
             this.tabLogs = new System.Windows.Forms.TabPage();
-            this.lblCpu = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtLogs = new System.Windows.Forms.TextBox();
             this.tabMounts = new System.Windows.Forms.TabPage();
             this.containerMounts = new System.Windows.Forms.ListView();
-            this.txtLogs = new System.Windows.Forms.TextBox();
             this.tabPorts = new System.Windows.Forms.TabPage();
             this.containerPorts = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tabNetworks = new System.Windows.Forms.TabPage();
+            this.networksTabs = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -75,40 +77,9 @@
             this.tabLogs.SuspendLayout();
             this.tabMounts.SuspendLayout();
             this.tabPorts.SuspendLayout();
+            this.tabNetworks.SuspendLayout();
+            this.networksTabs.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabLabels
-            // 
-            this.tabLabels.Controls.Add(this.containerLabels);
-            this.tabLabels.ImageIndex = 1;
-            this.tabLabels.Location = new System.Drawing.Point(4, 44);
-            this.tabLabels.Name = "tabLabels";
-            this.tabLabels.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLabels.Size = new System.Drawing.Size(966, 604);
-            this.tabLabels.TabIndex = 0;
-            this.tabLabels.Text = "Labels";
-            this.tabLabels.UseVisualStyleBackColor = true;
-            // 
-            // containerLabels
-            // 
-            this.containerLabels.AllowColumnReorder = true;
-            this.containerLabels.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.containerLabels.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            columnHeader1,
-            columnHeader2});
-            this.containerLabels.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.containerLabels.FullRowSelect = true;
-            this.containerLabels.GridLines = true;
-            this.containerLabels.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.containerLabels.HideSelection = false;
-            this.containerLabels.Location = new System.Drawing.Point(3, 3);
-            this.containerLabels.MultiSelect = false;
-            this.containerLabels.Name = "containerLabels";
-            this.containerLabels.ShowGroups = false;
-            this.containerLabels.Size = new System.Drawing.Size(960, 598);
-            this.containerLabels.TabIndex = 0;
-            this.containerLabels.UseCompatibleStateImageBehavior = false;
-            this.containerLabels.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -152,15 +123,66 @@
             // 
             Propagation.Text = "Propagation";
             // 
+            // IP
+            // 
+            IP.Text = "IP";
+            // 
+            // PrivatePort
+            // 
+            PrivatePort.Text = "Private Port";
+            PrivatePort.Width = 437;
+            // 
+            // PublicPort
+            // 
+            PublicPort.Text = "Public Port";
+            // 
+            // TypeString
+            // 
+            TypeString.Text = "Type";
+            // 
+            // tabLabels
+            // 
+            this.tabLabels.Controls.Add(this.containerLabels);
+            this.tabLabels.ImageIndex = 1;
+            this.tabLabels.Location = new System.Drawing.Point(4, 49);
+            this.tabLabels.Name = "tabLabels";
+            this.tabLabels.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLabels.Size = new System.Drawing.Size(966, 599);
+            this.tabLabels.TabIndex = 0;
+            this.tabLabels.Text = "Labels";
+            this.tabLabels.UseVisualStyleBackColor = true;
+            // 
+            // containerLabels
+            // 
+            this.containerLabels.AllowColumnReorder = true;
+            this.containerLabels.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.containerLabels.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeader1,
+            columnHeader2});
+            this.containerLabels.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.containerLabels.FullRowSelect = true;
+            this.containerLabels.GridLines = true;
+            this.containerLabels.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.containerLabels.HideSelection = false;
+            this.containerLabels.Location = new System.Drawing.Point(3, 3);
+            this.containerLabels.MultiSelect = false;
+            this.containerLabels.Name = "containerLabels";
+            this.containerLabels.ShowGroups = false;
+            this.containerLabels.Size = new System.Drawing.Size(960, 593);
+            this.containerLabels.TabIndex = 0;
+            this.containerLabels.UseCompatibleStateImageBehavior = false;
+            this.containerLabels.View = System.Windows.Forms.View.Details;
+            // 
             // tabs
             // 
             this.tabs.Controls.Add(this.tabLogs);
             this.tabs.Controls.Add(this.tabLabels);
             this.tabs.Controls.Add(this.tabMounts);
             this.tabs.Controls.Add(this.tabPorts);
+            this.tabs.Controls.Add(this.tabNetworks);
             this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabs.ImageList = this.imageList1;
-            this.tabs.ItemSize = new System.Drawing.Size(75, 40);
+            this.tabs.ItemSize = new System.Drawing.Size(75, 45);
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
@@ -170,33 +192,25 @@
             // tabLogs
             // 
             this.tabLogs.Controls.Add(this.txtLogs);
-            this.tabLogs.Controls.Add(this.lblCpu);
-            this.tabLogs.Controls.Add(this.label1);
             this.tabLogs.ImageIndex = 0;
-            this.tabLogs.Location = new System.Drawing.Point(4, 44);
+            this.tabLogs.Location = new System.Drawing.Point(4, 49);
             this.tabLogs.Name = "tabLogs";
-            this.tabLogs.Size = new System.Drawing.Size(966, 604);
+            this.tabLogs.Size = new System.Drawing.Size(966, 599);
             this.tabLogs.TabIndex = 3;
             this.tabLogs.Text = "Logs";
             this.tabLogs.UseVisualStyleBackColor = true;
             // 
-            // lblCpu
+            // txtLogs
             // 
-            this.lblCpu.AutoSize = true;
-            this.lblCpu.Location = new System.Drawing.Point(69, 11);
-            this.lblCpu.Name = "lblCpu";
-            this.lblCpu.Size = new System.Drawing.Size(46, 25);
-            this.lblCpu.TabIndex = 2;
-            this.lblCpu.Text = "0 %";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "CPU:";
+            this.txtLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLogs.Font = new System.Drawing.Font("Consolas", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogs.Location = new System.Drawing.Point(0, 0);
+            this.txtLogs.Multiline = true;
+            this.txtLogs.Name = "txtLogs";
+            this.txtLogs.ReadOnly = true;
+            this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLogs.Size = new System.Drawing.Size(966, 599);
+            this.txtLogs.TabIndex = 3;
             // 
             // tabMounts
             // 
@@ -238,21 +252,6 @@
             this.containerMounts.View = System.Windows.Forms.View.Details;
             this.containerMounts.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.containerMounts_MouseDoubleClick);
             // 
-            // txtLogs
-            // 
-            this.txtLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLogs.Font = new System.Drawing.Font("Consolas", 9.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogs.Location = new System.Drawing.Point(-1, 50);
-            this.txtLogs.Multiline = true;
-            this.txtLogs.Name = "txtLogs";
-            this.txtLogs.ReadOnly = true;
-            this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLogs.Size = new System.Drawing.Size(967, 551);
-            this.txtLogs.TabIndex = 3;
-            this.txtLogs.Text = "test log message";
-            // 
             // tabPorts
             // 
             this.tabPorts.Controls.Add(this.containerPorts);
@@ -288,23 +287,6 @@
             this.containerPorts.UseCompatibleStateImageBehavior = false;
             this.containerPorts.View = System.Windows.Forms.View.Details;
             // 
-            // IP
-            // 
-            IP.Text = "IP";
-            // 
-            // PrivatePort
-            // 
-            PrivatePort.Text = "Private Port";
-            PrivatePort.Width = 437;
-            // 
-            // PublicPort
-            // 
-            PublicPort.Text = "Public Port";
-            // 
-            // TypeString
-            // 
-            TypeString.Text = "Type";
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -313,6 +295,53 @@
             this.imageList1.Images.SetKeyName(1, "label.png");
             this.imageList1.Images.SetKeyName(2, "mount.png");
             this.imageList1.Images.SetKeyName(3, "port.png");
+            this.imageList1.Images.SetKeyName(4, "network.png");
+            // 
+            // tabNetworks
+            // 
+            this.tabNetworks.Controls.Add(this.networksTabs);
+            this.tabNetworks.ImageIndex = 4;
+            this.tabNetworks.Location = new System.Drawing.Point(4, 49);
+            this.tabNetworks.Name = "tabNetworks";
+            this.tabNetworks.Padding = new System.Windows.Forms.Padding(3);
+            this.tabNetworks.Size = new System.Drawing.Size(966, 599);
+            this.tabNetworks.TabIndex = 5;
+            this.tabNetworks.Text = "Networks";
+            this.tabNetworks.UseVisualStyleBackColor = true;
+            // 
+            // networksTabs
+            // 
+            this.networksTabs.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.networksTabs.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.networksTabs.Controls.Add(this.tabPage1);
+            this.networksTabs.Controls.Add(this.tabPage2);
+            this.networksTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.networksTabs.Location = new System.Drawing.Point(3, 3);
+            this.networksTabs.Multiline = true;
+            this.networksTabs.Name = "networksTabs";
+            this.networksTabs.SelectedIndex = 0;
+            this.networksTabs.Size = new System.Drawing.Size(960, 593);
+            this.networksTabs.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(952, 0);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(952, 0);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // DockerContainerDetails
             // 
@@ -327,6 +356,8 @@
             this.tabLogs.PerformLayout();
             this.tabMounts.ResumeLayout(false);
             this.tabPorts.ResumeLayout(false);
+            this.tabNetworks.ResumeLayout(false);
+            this.networksTabs.ResumeLayout(false);
             this.ResumeLayout(false);
 
       }
@@ -338,12 +369,14 @@
       private System.Windows.Forms.ListView containerLabels;
       private System.Windows.Forms.ListView containerMounts;
       private System.Windows.Forms.TabPage tabLogs;
-      private System.Windows.Forms.Label lblCpu;
-      private System.Windows.Forms.Label label1;
       private System.Windows.Forms.TextBox txtLogs;
       private System.Windows.Forms.TabPage tabPorts;
       private System.Windows.Forms.ListView containerPorts;
       private System.Windows.Forms.TabPage tabLabels;
       private System.Windows.Forms.ImageList imageList1;
+      private System.Windows.Forms.TabPage tabNetworks;
+      private System.Windows.Forms.TabControl networksTabs;
+      private System.Windows.Forms.TabPage tabPage1;
+      private System.Windows.Forms.TabPage tabPage2;
    }
 }

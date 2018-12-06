@@ -32,8 +32,8 @@ namespace DockerExplorer.WinForms
          comboUpdateInterval.ComboBox.DataSource = 
             _updateTextToValue.Select(i => new TaggedString<TimeSpan>(i.Key, i.Value)).ToArray();
          comboUpdateInterval.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+         dockerContainerDetails.Visible = false;
          UpdateInterval = Settings.Instance.AutoRefreshContainersInterval;
-
          _presenter = DockerPresenter.Instance;
 
          if (!this.IsInDesignMode())
@@ -151,10 +151,12 @@ namespace DockerExplorer.WinForms
          if (containersList.SelectedItems.Count == 0)
          {
             deleteContainer.Enabled = false;
+            dockerContainerDetails.Visible = false;
             return;
          }
 
          //deleteContainer.Enabled = true;
+         dockerContainerDetails.Visible = true;
 
          var container = containersList.SelectedItems[0].Tag as DockerContainer;
 

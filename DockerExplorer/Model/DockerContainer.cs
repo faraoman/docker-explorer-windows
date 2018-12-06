@@ -22,6 +22,10 @@ namespace DockerExplorer.Model
          Labels = new Dictionary<string, string>(wr.Labels);
          Mounts = wr.Mounts == null ? new List<MountPoint>() : new List<MountPoint>(wr.Mounts);
          Ports = wr.Ports == null ? new List<Port>() : new List<Port>(wr.Ports);
+
+         NetworkSettings = wr.NetworkSettings?.Networks == null
+            ? new Dictionary<string, EndpointSettings>()
+            : new Dictionary<string, EndpointSettings>(wr.NetworkSettings.Networks);
       }
 
       public string Id { get; }
@@ -47,5 +51,7 @@ namespace DockerExplorer.Model
       public List<MountPoint> Mounts { get; }
 
       public List<Port> Ports { get; }
+
+      public Dictionary<string, EndpointSettings> NetworkSettings { get; }
    }
 }
