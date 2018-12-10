@@ -43,7 +43,12 @@
             System.Windows.Forms.ColumnHeader PrivatePort;
             System.Windows.Forms.ColumnHeader PublicPort;
             System.Windows.Forms.ColumnHeader TypeString;
+            System.Windows.Forms.ColumnHeader columnHeader3;
+            System.Windows.Forms.ColumnHeader columnHeader7;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockerContainerDetails));
+            System.Windows.Forms.ColumnHeader columnHeader4;
+            System.Windows.Forms.ColumnHeader columnHeader5;
+            System.Windows.Forms.ColumnHeader columnHeader6;
             this.tabLabels = new System.Windows.Forms.TabPage();
             this.containerLabels = new System.Windows.Forms.ListView();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -54,9 +59,7 @@
             this.tabPorts = new System.Windows.Forms.TabPage();
             this.containerPorts = new System.Windows.Forms.ListView();
             this.tabNetworks = new System.Windows.Forms.TabPage();
-            this.networksTabs = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.containerNetworks = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,13 +75,17 @@
             PrivatePort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             PublicPort = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             TypeString = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabLabels.SuspendLayout();
             this.tabs.SuspendLayout();
             this.tabLogs.SuspendLayout();
             this.tabMounts.SuspendLayout();
             this.tabPorts.SuspendLayout();
             this.tabNetworks.SuspendLayout();
-            this.networksTabs.SuspendLayout();
             this.SuspendLayout();
             // 
             // columnHeader1
@@ -139,6 +146,14 @@
             // TypeString
             // 
             TypeString.Text = "Type";
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Name";
+            // 
+            // columnHeader7
+            // 
+            columnHeader7.Text = "IP Address";
             // 
             // tabLabels
             // 
@@ -219,7 +234,7 @@
             this.tabMounts.Location = new System.Drawing.Point(4, 49);
             this.tabMounts.Name = "tabMounts";
             this.tabMounts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMounts.Size = new System.Drawing.Size(966, 599);
+            this.tabMounts.Size = new System.Drawing.Size(990, 583);
             this.tabMounts.TabIndex = 1;
             this.tabMounts.Text = "Mounts";
             this.tabMounts.UseVisualStyleBackColor = true;
@@ -246,7 +261,7 @@
             this.containerMounts.MultiSelect = false;
             this.containerMounts.Name = "containerMounts";
             this.containerMounts.ShowGroups = false;
-            this.containerMounts.Size = new System.Drawing.Size(960, 593);
+            this.containerMounts.Size = new System.Drawing.Size(984, 577);
             this.containerMounts.TabIndex = 1;
             this.containerMounts.UseCompatibleStateImageBehavior = false;
             this.containerMounts.View = System.Windows.Forms.View.Details;
@@ -259,7 +274,7 @@
             this.tabPorts.Location = new System.Drawing.Point(4, 49);
             this.tabPorts.Name = "tabPorts";
             this.tabPorts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPorts.Size = new System.Drawing.Size(966, 599);
+            this.tabPorts.Size = new System.Drawing.Size(990, 583);
             this.tabPorts.TabIndex = 4;
             this.tabPorts.Text = "Ports";
             this.tabPorts.UseVisualStyleBackColor = true;
@@ -282,14 +297,14 @@
             this.containerPorts.MultiSelect = false;
             this.containerPorts.Name = "containerPorts";
             this.containerPorts.ShowGroups = false;
-            this.containerPorts.Size = new System.Drawing.Size(960, 593);
+            this.containerPorts.Size = new System.Drawing.Size(984, 577);
             this.containerPorts.TabIndex = 1;
             this.containerPorts.UseCompatibleStateImageBehavior = false;
             this.containerPorts.View = System.Windows.Forms.View.Details;
             // 
             // tabNetworks
             // 
-            this.tabNetworks.Controls.Add(this.networksTabs);
+            this.tabNetworks.Controls.Add(this.containerNetworks);
             this.tabNetworks.ImageIndex = 4;
             this.tabNetworks.Location = new System.Drawing.Point(4, 49);
             this.tabNetworks.Name = "tabNetworks";
@@ -299,39 +314,29 @@
             this.tabNetworks.Text = "Networks";
             this.tabNetworks.UseVisualStyleBackColor = true;
             // 
-            // networksTabs
+            // containerNetworks
             // 
-            this.networksTabs.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.networksTabs.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.networksTabs.Controls.Add(this.tabPage1);
-            this.networksTabs.Controls.Add(this.tabPage2);
-            this.networksTabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.networksTabs.Location = new System.Drawing.Point(3, 3);
-            this.networksTabs.Multiline = true;
-            this.networksTabs.Name = "networksTabs";
-            this.networksTabs.SelectedIndex = 0;
-            this.networksTabs.Size = new System.Drawing.Size(984, 577);
-            this.networksTabs.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(976, 0);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(952, 0);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.containerNetworks.AllowColumnReorder = true;
+            this.containerNetworks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.containerNetworks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeader3,
+            columnHeader7,
+            columnHeader4,
+            columnHeader5,
+            columnHeader6});
+            this.containerNetworks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.containerNetworks.FullRowSelect = true;
+            this.containerNetworks.GridLines = true;
+            this.containerNetworks.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.containerNetworks.HideSelection = false;
+            this.containerNetworks.Location = new System.Drawing.Point(3, 3);
+            this.containerNetworks.MultiSelect = false;
+            this.containerNetworks.Name = "containerNetworks";
+            this.containerNetworks.ShowGroups = false;
+            this.containerNetworks.Size = new System.Drawing.Size(984, 577);
+            this.containerNetworks.TabIndex = 2;
+            this.containerNetworks.UseCompatibleStateImageBehavior = false;
+            this.containerNetworks.View = System.Windows.Forms.View.Details;
             // 
             // imageList1
             // 
@@ -342,6 +347,18 @@
             this.imageList1.Images.SetKeyName(2, "mount.png");
             this.imageList1.Images.SetKeyName(3, "port.png");
             this.imageList1.Images.SetKeyName(4, "network.png");
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Network ID";
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Endpoint ID";
+            // 
+            // columnHeader6
+            // 
+            columnHeader6.Text = "MAC";
             // 
             // DockerContainerDetails
             // 
@@ -357,7 +374,6 @@
             this.tabMounts.ResumeLayout(false);
             this.tabPorts.ResumeLayout(false);
             this.tabNetworks.ResumeLayout(false);
-            this.networksTabs.ResumeLayout(false);
             this.ResumeLayout(false);
 
       }
@@ -375,8 +391,6 @@
       private System.Windows.Forms.TabPage tabLabels;
       private System.Windows.Forms.ImageList imageList1;
       private System.Windows.Forms.TabPage tabNetworks;
-      private System.Windows.Forms.TabControl networksTabs;
-      private System.Windows.Forms.TabPage tabPage1;
-      private System.Windows.Forms.TabPage tabPage2;
+      private System.Windows.Forms.ListView containerNetworks;
    }
 }

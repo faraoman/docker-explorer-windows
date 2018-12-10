@@ -94,32 +94,22 @@ namespace DockerExplorer.WinForms
 
       private void RenderNetworks(DockerContainer container)
       {
-         networksTabs.TabPages.Clear();
+         containerNetworks.Items.Clear();
 
-         var nc = new NetworkDetails();
-         nc.Dock = DockStyle.Fill;
-
-
-         var tab = new TabPage("test");
-         tab.Controls.Add(nc);
-         tab.CreateControl();
-         networksTabs.TabPages.Add(tab);
-
-         /*foreach (KeyValuePair<string, EndpointSettings> network in container.NetworkSettings)
+         foreach (KeyValuePair<string, EndpointSettings> network in container.NetworkSettings)
          {
-            var nc = new NetworkDetails();
-            nc.Dock = DockStyle.Fill;
-
-
-            var tab = new TabPage(network.Key);
-            tab.Name = network.Key;
-            tab.Controls.Add(nc);
-            tab.CreateControl();
-            networksTabs.TabPages.Add(tab);
-
-
-            //nc.EndpointSettings = network.Value;
-         }*/
+            containerNetworks.Items.Add(
+               new ListViewItem(new[]
+               {
+                  network.Key,
+                  $"{network.Value.IPAddress} ({network.Value.IPPrefixLen})",
+                  network.Value.NetworkID,
+                  network.Value.EndpointID,
+                  network.Value.MacAddress
+               }));
+         }
+         containerNetworks.AutoAlign();
+         tabNetworks.Text = $"Networks ({container.NetworkSettings.Count})";
       }
 
       private void containerMounts_MouseDoubleClick(object sender, MouseEventArgs e)
