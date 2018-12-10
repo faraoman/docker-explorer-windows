@@ -70,6 +70,7 @@
             // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.Image = global::DockerExplorer.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
             this.exitToolStripMenuItem.Text = "&Exit";
@@ -85,6 +86,7 @@
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.Image = global::DockerExplorer.Properties.Resources.about;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
             this.aboutToolStripMenuItem.Text = "&About";

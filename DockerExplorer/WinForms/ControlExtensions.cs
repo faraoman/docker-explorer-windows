@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace DockerExplorer.WinForms
@@ -7,6 +8,9 @@ namespace DockerExplorer.WinForms
    {
       public static bool IsInDesignMode(this Control control)
       {
+         if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+            return true;
+
          while (control != null)
          {
             if (control.Site != null && control.Site.DesignMode)
