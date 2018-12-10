@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		squirrel.nuspec = squirrel.nuspec
 	EndProjectSection
 EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "DockerExplorerUwp", "DockerExplorerUwp\DockerExplorerUwp.wapproj", "{5063C1F1-4C17-449A-9550-EDD0801CF2CD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -26,12 +24,6 @@ Global
 		{A6B00937-A7B1-4F56-9EDC-6220DEA07DED}.Debug|x86.Build.0 = Debug|x86
 		{A6B00937-A7B1-4F56-9EDC-6220DEA07DED}.Release|x86.ActiveCfg = Release|x86
 		{A6B00937-A7B1-4F56-9EDC-6220DEA07DED}.Release|x86.Build.0 = Release|x86
-		{5063C1F1-4C17-449A-9550-EDD0801CF2CD}.Debug|x86.ActiveCfg = Debug|x86
-		{5063C1F1-4C17-449A-9550-EDD0801CF2CD}.Debug|x86.Build.0 = Debug|x86
-		{5063C1F1-4C17-449A-9550-EDD0801CF2CD}.Debug|x86.Deploy.0 = Debug|x86
-		{5063C1F1-4C17-449A-9550-EDD0801CF2CD}.Release|x86.ActiveCfg = Release|x86
-		{5063C1F1-4C17-449A-9550-EDD0801CF2CD}.Release|x86.Build.0 = Release|x86
-		{5063C1F1-4C17-449A-9550-EDD0801CF2CD}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

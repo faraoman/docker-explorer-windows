@@ -96,7 +96,16 @@ namespace DockerExplorer.WinForms
       {
          networksTabs.TabPages.Clear();
 
-         foreach(KeyValuePair<string, EndpointSettings> network in container.NetworkSettings)
+         var nc = new NetworkDetails();
+         nc.Dock = DockStyle.Fill;
+
+
+         var tab = new TabPage("test");
+         tab.Controls.Add(nc);
+         tab.CreateControl();
+         networksTabs.TabPages.Add(tab);
+
+         /*foreach (KeyValuePair<string, EndpointSettings> network in container.NetworkSettings)
          {
             var nc = new NetworkDetails();
             nc.Dock = DockStyle.Fill;
@@ -110,7 +119,7 @@ namespace DockerExplorer.WinForms
 
 
             //nc.EndpointSettings = network.Value;
-         }
+         }*/
       }
 
       private void containerMounts_MouseDoubleClick(object sender, MouseEventArgs e)
