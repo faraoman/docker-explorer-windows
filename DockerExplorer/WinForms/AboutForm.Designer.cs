@@ -34,7 +34,10 @@
             this.linkTwitter = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,9 +59,9 @@
             this.label2.Location = new System.Drawing.Point(309, 74);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 24);
+            this.label2.Size = new System.Drawing.Size(426, 24);
             this.label2.TabIndex = 2;
-            this.label2.Text = "the only native Windows tool";
+            this.label2.Text = "the only native Windows tool, and it\'s soooo fast....";
             // 
             // linkGitHub
             // 
@@ -100,6 +103,28 @@
             this.lblVersion.TabIndex = 6;
             this.lblVersion.Text = "v1.x";
             // 
+            // button1
+            // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(1011, 285);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 48);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "&Close";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Image = global::DockerExplorer.Properties.Resources.fast;
+            this.pictureBox2.Location = new System.Drawing.Point(760, 74);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(173, 134);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DockerExplorer.Properties.Resources.docker;
@@ -118,6 +143,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1136, 345);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.linkTwitter);
@@ -130,6 +157,7 @@
             this.Name = "AboutForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Docker Explorer";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,5 +173,7 @@
       private System.Windows.Forms.LinkLabel linkTwitter;
       private System.Windows.Forms.Label label3;
       private System.Windows.Forms.Label lblVersion;
+      private System.Windows.Forms.Button button1;
+      private System.Windows.Forms.PictureBox pictureBox2;
    }
 }

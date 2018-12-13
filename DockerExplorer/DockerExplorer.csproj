@@ -255,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="docker.ico" />
+    <None Include="Resources\fast.gif" />
     <None Include="Resources\docker.png" />
     <None Include="Resources\exit.png" />
     <None Include="Resources\about.png" />
