@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DockerExplorer.WinForms
+﻿namespace DockerExplorer.WinForms
 {
    public interface IMainToolbarClient
    {
-      void RefreshAll();
+      void RefreshAll(string substring);
+
+      void Search(string substring);
    }
 }

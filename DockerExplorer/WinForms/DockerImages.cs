@@ -30,13 +30,14 @@ namespace DockerExplorer.WinForms
          }
       }
 
-      private async void ReloadImages()
+      private async void ReloadImages(string substring = null)
       {
          try
          {
             IReadOnlyCollection<DockerImage> images = await _presenter.GetAllImagesAsync();
 
             AddImages(images, treeDockerImages.Nodes);
+            AddAllImages(images, substring);
          }
          catch (Exception ex)
          {
@@ -45,10 +46,48 @@ namespace DockerExplorer.WinForms
 
          if(_lastSelectedImageId == null)
          {
-            _lastSelectedImageId = (treeDockerImages.Nodes.Cast<TreeNode>().FirstOrDefault()?.Tag as DockerImage)?.ShortId;
+            _lastSelectedImageId = treeDockerImages.SelectedNode == null
+               ? null
+               : (treeDockerImages.SelectedNode.Tag as DockerImage)?.ShortId;
          }
 
          SelectImage(_lastSelectedImageId);
+      }
+
+      private void AddAllImages(IReadOnlyCollection<DockerImage> images, string substring)
+      {
+         listDockerImages.Items.Clear();
+
+         AddSubImages(images, substring);
+
+         listDockerImages.AutoAlign();
+      }
+
+      private void AddSubImages(IReadOnlyCollection<DockerImage> images, string substring)
+      {
+         if(!string.IsNullOrEmpty(substring))
+         {
+            images = images
+               .Where(i => i.Name.IndexOf(substring, StringComparison.OrdinalIgnoreCase) != -1)
+               .ToList();
+         }
+
+         foreach(DockerImage image in images)
+         {
+            listDockerImages.Items.Add(
+               new ListViewItem(new[]
+               {
+                  image.Name
+               })
+               {
+                  Tag = image
+               });
+
+            if(image.Children?.Count > 0)
+            {
+               AddSubImages(image.Children, substring);
+            }
+         }
       }
 
       private void AddImages(IReadOnlyCollection<DockerImage> images, TreeNodeCollection nodes)
@@ -74,11 +113,24 @@ namespace DockerExplorer.WinForms
       }
 
 
-      private async void treeDockerImages_AfterSelect(object sender, TreeViewEventArgs e)
+      private void treeDockerImages_AfterSelect(object sender, TreeViewEventArgs e)
       {
          if (treeDockerImages.SelectedNode == null || !(treeDockerImages.SelectedNode.Tag is DockerImage image))
             return;
 
+         RenderImage(image);
+      }
+
+      private void listDockerImages_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if (listDockerImages.SelectedItems.Count == 0 || !(listDockerImages.SelectedItems[0].Tag is DockerImage image))
+            return;
+
+         RenderImage(image);
+      }
+
+      private async void RenderImage(DockerImage image)
+      {
          txtId.Text = image.ShortId;
          if (string.IsNullOrEmpty(image.ParentId))
          {
@@ -98,7 +150,7 @@ namespace DockerExplorer.WinForms
          IReadOnlyCollection<DockerImageHistory> history = await _presenter.GetImageHistoryAsync(image.Id);
 
          listContainerHistory.Items.Clear();
-         foreach(DockerImageHistory item in history)
+         foreach (DockerImageHistory item in history)
          {
             listContainerHistory.Items.Add(
                new ListViewItem(new[]
@@ -112,10 +164,7 @@ namespace DockerExplorer.WinForms
                }));
          }
          listContainerHistory.AutoAlign();
-
       }
-
-
 
       private void linkParentId_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
       {
@@ -157,11 +206,14 @@ namespace DockerExplorer.WinForms
          return null;
       }
 
-      private void refreshImages_Click(object sender, EventArgs e)
+      public void RefreshAll(string substring)
       {
-         ReloadImages();
+         ReloadImages(substring);
       }
 
-      public void RefreshAll() => ReloadImages();
+      public void Search(string substring)
+      {
+         ReloadImages(substring);
+      }
    }
 }

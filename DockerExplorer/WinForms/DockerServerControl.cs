@@ -86,7 +86,15 @@ namespace DockerExplorer
 
       private void refreshToolButton_Click(object sender, EventArgs e)
       {
-         _toolbarClients.ForEach(tc => tc.RefreshAll()).ToList();
+         _toolbarClients.ForEach(tc => tc.RefreshAll(searchText.Text)).ToList();
+      }
+
+      private void searchText_KeyUp(object sender, KeyEventArgs e)
+      {
+         if (e.KeyCode == Keys.Return)
+         {
+            _toolbarClients.ForEach(tc => tc.Search(searchText.Text)).ToList();
+         }
       }
    }
 }

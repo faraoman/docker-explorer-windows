@@ -37,8 +37,10 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.refreshToolButton = new System.Windows.Forms.ToolStripButton();
             this.comboUpdateInterval = new System.Windows.Forms.ToolStripComboBox();
+            this.searchText = new System.Windows.Forms.ToolStripTextBox();
             this.dockerContainers1 = new DockerExplorer.WinForms.DockerContainers();
             this.dockerImages1 = new DockerExplorer.WinForms.DockerImages();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -95,7 +97,9 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.refreshToolButton,
-            this.comboUpdateInterval});
+            this.comboUpdateInterval,
+            this.toolStripLabel1,
+            this.searchText});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1173, 47);
@@ -121,6 +125,12 @@
             this.comboUpdateInterval.Size = new System.Drawing.Size(121, 47);
             this.comboUpdateInterval.ToolTipText = "autorefresh interval";
             // 
+            // searchText
+            // 
+            this.searchText.Name = "searchText";
+            this.searchText.Size = new System.Drawing.Size(200, 47);
+            this.searchText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchText_KeyUp);
+            // 
             // dockerContainers1
             // 
             this.dockerContainers1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -136,6 +146,12 @@
             this.dockerImages1.Name = "dockerImages1";
             this.dockerImages1.Size = new System.Drawing.Size(1159, 645);
             this.dockerImages1.TabIndex = 0;
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(78, 44);
+            this.toolStripLabel1.Text = "search:";
             // 
             // DockerServerControl
             // 
@@ -166,5 +182,7 @@
       private System.Windows.Forms.ToolStrip toolStrip1;
       private System.Windows.Forms.ToolStripButton refreshToolButton;
       private System.Windows.Forms.ToolStripComboBox comboUpdateInterval;
+      private System.Windows.Forms.ToolStripTextBox searchText;
+      private System.Windows.Forms.ToolStripLabel toolStripLabel1;
    }
 }

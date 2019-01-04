@@ -30,11 +30,18 @@ namespace DockerExplorer.WinForms
       }
 
 
-      private async void ReloadContainers()
+      private async void ReloadContainers(string substring = null)
       {
          try
          {
             IReadOnlyCollection<DockerContainer> containers = await _presenter.GetAllContainersAsync();
+
+            if (!string.IsNullOrEmpty(substring))
+            {
+               containers = containers
+                  .Where(c => c.Name.IndexOf(substring, StringComparison.OrdinalIgnoreCase) != -1)
+                  .ToList();
+            }
 
             containersList.Items.Clear();
             foreach (DockerContainer container in containers)
@@ -89,6 +96,14 @@ namespace DockerExplorer.WinForms
          }
       }
 
-      public void RefreshAll() => ReloadContainers();
+      public void RefreshAll(string substring)
+      {
+         ReloadContainers(substring);
+      }
+
+      public void Search(string substring)
+      {
+         ReloadContainers(substring);
+      }
    }
 }
