@@ -13,7 +13,7 @@ using NetBox.Extensions;
 
 namespace DockerExplorer.WinForms
 {
-   public partial class DockerImages : UserControl
+   public partial class DockerImages : UserControl, IMainToolbarClient
    {
       private readonly DockerPresenter _presenter;
       private string _lastSelectedImageId = null;
@@ -161,5 +161,7 @@ namespace DockerExplorer.WinForms
       {
          ReloadImages();
       }
+
+      public void RefreshAll() => ReloadImages();
    }
 }

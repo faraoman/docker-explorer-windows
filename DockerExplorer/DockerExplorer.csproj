@@ -188,6 +188,7 @@
     <Compile Include="WinForms\DockerServerControl.Designer.cs">
       <DependentUpon>DockerServerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\IMainToolbarClient.cs" />
     <Compile Include="WinForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
