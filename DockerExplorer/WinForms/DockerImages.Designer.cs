@@ -56,7 +56,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listDockerImages = new System.Windows.Forms.ListView();
-            this.checkHideNoRepos = new System.Windows.Forms.CheckBox();
+            this.checkHideUntagged = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -338,7 +338,7 @@
             this.listDockerImages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listDockerImages.FullRowSelect = true;
             this.listDockerImages.GridLines = true;
-            this.listDockerImages.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listDockerImages.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listDockerImages.HideSelection = false;
             this.listDockerImages.Location = new System.Drawing.Point(3, 3);
             this.listDockerImages.MultiSelect = false;
@@ -354,21 +354,22 @@
             columnHeader1.Text = "Name";
             columnHeader1.Width = 132;
             // 
-            // checkHideNoRepos
+            // checkHideUntagged
             // 
-            this.checkHideNoRepos.AutoSize = true;
-            this.checkHideNoRepos.Checked = true;
-            this.checkHideNoRepos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkHideNoRepos.Location = new System.Drawing.Point(3, 6);
-            this.checkHideNoRepos.Name = "checkHideNoRepos";
-            this.checkHideNoRepos.Size = new System.Drawing.Size(253, 29);
-            this.checkHideNoRepos.TabIndex = 1;
-            this.checkHideNoRepos.Text = "hide images with no repo";
-            this.checkHideNoRepos.UseVisualStyleBackColor = true;
+            this.checkHideUntagged.AutoSize = true;
+            this.checkHideUntagged.Checked = true;
+            this.checkHideUntagged.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkHideUntagged.Location = new System.Drawing.Point(3, 6);
+            this.checkHideUntagged.Name = "checkHideUntagged";
+            this.checkHideUntagged.Size = new System.Drawing.Size(230, 29);
+            this.checkHideUntagged.TabIndex = 1;
+            this.checkHideUntagged.Text = "hide untagged images";
+            this.checkHideUntagged.UseVisualStyleBackColor = true;
+            this.checkHideUntagged.CheckedChanged += new System.EventHandler(this.checkHideUntagged_CheckedChanged);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.checkHideNoRepos);
+            this.panel3.Controls.Add(this.checkHideUntagged);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 1021);
             this.panel3.Name = "panel3";
@@ -414,6 +415,6 @@
       private System.Windows.Forms.TabPage tabPage2;
       private System.Windows.Forms.ListView listDockerImages;
       private System.Windows.Forms.Panel panel3;
-      private System.Windows.Forms.CheckBox checkHideNoRepos;
+      private System.Windows.Forms.CheckBox checkHideUntagged;
    }
 }

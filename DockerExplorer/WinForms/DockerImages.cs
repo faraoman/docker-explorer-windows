@@ -17,6 +17,7 @@ namespace DockerExplorer.WinForms
    {
       private readonly DockerPresenter _presenter;
       private string _lastSelectedImageId = null;
+      private string _lastSubstring = null;
 
       public DockerImages()
       {
@@ -72,16 +73,20 @@ namespace DockerExplorer.WinForms
                .ToList();
          }
 
+
          foreach(DockerImage image in images)
          {
-            listDockerImages.Items.Add(
-               new ListViewItem(new[]
-               {
+            if (!(checkHideUntagged.Checked && image.Tag == "<none>"))
+            {
+               listDockerImages.Items.Add(
+                  new ListViewItem(new[]
+                  {
                   image.Name
-               })
-               {
-                  Tag = image
-               });
+                  })
+                  {
+                     Tag = image
+                  });
+            }
 
             if(image.Children?.Count > 0)
             {
@@ -209,11 +214,20 @@ namespace DockerExplorer.WinForms
       public void RefreshAll(string substring)
       {
          ReloadImages(substring);
+
+         _lastSubstring = substring;
       }
 
       public void Search(string substring)
       {
          ReloadImages(substring);
+
+         _lastSubstring = substring;
+      }
+
+      private void checkHideUntagged_CheckedChanged(object sender, EventArgs e)
+      {
+         ReloadImages(_lastSubstring);
       }
    }
 }
