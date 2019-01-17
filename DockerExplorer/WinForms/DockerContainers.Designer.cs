@@ -67,6 +67,7 @@
             // containersList
             // 
             this.containersList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.containersList.CheckBoxes = true;
             this.containersList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             ID,
             Name,
@@ -86,6 +87,7 @@
             this.containersList.TabIndex = 5;
             this.containersList.UseCompatibleStateImageBehavior = false;
             this.containersList.View = System.Windows.Forms.View.Details;
+            this.containersList.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.containersList_ItemChecked);
             this.containersList.SelectedIndexChanged += new System.EventHandler(this.containersList_SelectedIndexChanged);
             // 
             // Status

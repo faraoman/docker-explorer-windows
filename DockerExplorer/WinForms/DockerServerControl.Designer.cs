@@ -30,40 +30,43 @@
       {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DockerServerControl));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabs = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dockerContainersTab = new DockerExplorer.WinForms.DockerContainers();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dockerImagesTab = new DockerExplorer.WinForms.DockerImages();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.refreshToolButton = new System.Windows.Forms.ToolStripButton();
             this.comboUpdateInterval = new System.Windows.Forms.ToolStripComboBox();
-            this.searchText = new System.Windows.Forms.ToolStripTextBox();
-            this.dockerContainers1 = new DockerExplorer.WinForms.DockerContainers();
-            this.dockerImages1 = new DockerExplorer.WinForms.DockerImages();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tabControl1.SuspendLayout();
+            this.searchText = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolButton = new System.Windows.Forms.ToolStripButton();
+            this.tabs.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabs
             // 
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ImageList = this.imageList1;
-            this.tabControl1.ItemSize = new System.Drawing.Size(150, 50);
-            this.tabControl1.Location = new System.Drawing.Point(0, 47);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1173, 709);
-            this.tabControl1.TabIndex = 0;
+            this.tabs.Controls.Add(this.tabPage2);
+            this.tabs.Controls.Add(this.tabPage1);
+            this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabs.ImageList = this.imageList1;
+            this.tabs.ItemSize = new System.Drawing.Size(150, 50);
+            this.tabs.Location = new System.Drawing.Point(0, 47);
+            this.tabs.Multiline = true;
+            this.tabs.Name = "tabs";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.Size = new System.Drawing.Size(1173, 709);
+            this.tabs.TabIndex = 0;
+            this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dockerContainers1);
+            this.tabPage2.Controls.Add(this.dockerContainersTab);
             this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 54);
             this.tabPage2.Name = "tabPage2";
@@ -73,9 +76,18 @@
             this.tabPage2.Text = "Containers";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dockerContainersTab
+            // 
+            this.dockerContainersTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockerContainersTab.Location = new System.Drawing.Point(3, 3);
+            this.dockerContainersTab.Name = "dockerContainersTab";
+            this.dockerContainersTab.Size = new System.Drawing.Size(1159, 645);
+            this.dockerContainersTab.TabIndex = 0;
+            this.dockerContainersTab.ToolbarServer = null;
+            // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dockerImages1);
+            this.tabPage1.Controls.Add(this.dockerImagesTab);
             this.tabPage1.ImageIndex = 0;
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
@@ -84,6 +96,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Images";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dockerImagesTab
+            // 
+            this.dockerImagesTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dockerImagesTab.Location = new System.Drawing.Point(3, 3);
+            this.dockerImagesTab.Name = "dockerImagesTab";
+            this.dockerImagesTab.Size = new System.Drawing.Size(1159, 645);
+            this.dockerImagesTab.TabIndex = 0;
+            this.dockerImagesTab.ToolbarServer = null;
             // 
             // imageList1
             // 
@@ -99,7 +120,9 @@
             this.refreshToolButton,
             this.comboUpdateInterval,
             this.toolStripLabel1,
-            this.searchText});
+            this.searchText,
+            this.toolStripSeparator1,
+            this.deleteToolButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1173, 47);
@@ -125,43 +148,43 @@
             this.comboUpdateInterval.Size = new System.Drawing.Size(121, 47);
             this.comboUpdateInterval.ToolTipText = "autorefresh interval";
             // 
-            // searchText
-            // 
-            this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(200, 47);
-            this.searchText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchText_KeyUp);
-            // 
-            // dockerContainers1
-            // 
-            this.dockerContainers1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockerContainers1.Location = new System.Drawing.Point(3, 3);
-            this.dockerContainers1.Name = "dockerContainers1";
-            this.dockerContainers1.Size = new System.Drawing.Size(1159, 645);
-            this.dockerContainers1.TabIndex = 0;
-            // 
-            // dockerImages1
-            // 
-            this.dockerImages1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockerImages1.Location = new System.Drawing.Point(3, 3);
-            this.dockerImages1.Name = "dockerImages1";
-            this.dockerImages1.Size = new System.Drawing.Size(1159, 645);
-            this.dockerImages1.TabIndex = 0;
-            // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(78, 44);
             this.toolStripLabel1.Text = "search:";
             // 
+            // searchText
+            // 
+            this.searchText.Name = "searchText";
+            this.searchText.Size = new System.Drawing.Size(200, 47);
+            this.searchText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchText_KeyUp);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 47);
+            // 
+            // deleteToolButton
+            // 
+            this.deleteToolButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.deleteToolButton.Image = global::DockerExplorer.Properties.Resources.delete;
+            this.deleteToolButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteToolButton.Name = "deleteToolButton";
+            this.deleteToolButton.Size = new System.Drawing.Size(44, 44);
+            this.deleteToolButton.Text = "toolStripButton1";
+            this.deleteToolButton.ToolTipText = "delete selected";
+            this.deleteToolButton.Click += new System.EventHandler(this.deleteToolButton_Click);
+            // 
             // DockerServerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabs);
             this.Controls.Add(this.toolStrip1);
             this.Name = "DockerServerControl";
             this.Size = new System.Drawing.Size(1173, 756);
-            this.tabControl1.ResumeLayout(false);
+            this.tabs.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -173,16 +196,18 @@
 
       #endregion
 
-      private System.Windows.Forms.TabControl tabControl1;
+      private System.Windows.Forms.TabControl tabs;
       private System.Windows.Forms.TabPage tabPage1;
       private System.Windows.Forms.TabPage tabPage2;
-      private WinForms.DockerContainers dockerContainers1;
-      private WinForms.DockerImages dockerImages1;
+      private WinForms.DockerContainers dockerContainersTab;
+      private WinForms.DockerImages dockerImagesTab;
       private System.Windows.Forms.ImageList imageList1;
       private System.Windows.Forms.ToolStrip toolStrip1;
       private System.Windows.Forms.ToolStripButton refreshToolButton;
       private System.Windows.Forms.ToolStripComboBox comboUpdateInterval;
       private System.Windows.Forms.ToolStripTextBox searchText;
       private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+      private System.Windows.Forms.ToolStripButton deleteToolButton;
    }
 }

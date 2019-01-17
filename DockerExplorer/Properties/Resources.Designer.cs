@@ -81,6 +81,25 @@ namespace DockerExplorer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the following containers:
+        ///{0}.
+        /// </summary>
+        internal static string Dialog_DeleteContainers_Text {
+            get {
+                return ResourceManager.GetString("Dialog_DeleteContainers_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete containers confirmation.
+        /// </summary>
+        internal static string Dialog_DeleteContainers_Title {
+            get {
+                return ResourceManager.GetString("Dialog_DeleteContainers_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap docker {

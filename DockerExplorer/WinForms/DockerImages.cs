@@ -19,6 +19,8 @@ namespace DockerExplorer.WinForms
       private string _lastSelectedImageId = null;
       private string _lastSubstring = null;
 
+      public IMainToolbarServer ToolbarServer { get; set; }
+
       public DockerImages()
       {
          InitializeComponent();
@@ -211,14 +213,14 @@ namespace DockerExplorer.WinForms
          return null;
       }
 
-      public void RefreshAll(string substring)
+      public void ToolbarRefreshAll(string substring)
       {
          ReloadImages(substring);
 
          _lastSubstring = substring;
       }
 
-      public void Search(string substring)
+      public void ToolbarSearch(string substring)
       {
          ReloadImages(substring);
 
@@ -228,6 +230,16 @@ namespace DockerExplorer.WinForms
       private void checkHideUntagged_CheckedChanged(object sender, EventArgs e)
       {
          ReloadImages(_lastSubstring);
+      }
+
+      public void ToolbarActivate()
+      {
+         ToolbarServer.ReportCapabilities(false);
+      }
+
+      public async Task ToolbarDeleteAsync()
+      {
+         
       }
    }
 }

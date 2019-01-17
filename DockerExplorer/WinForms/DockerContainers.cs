@@ -10,12 +10,16 @@ using System.Windows.Forms;
 using DockerExplorer.Model;
 using DockerExplorer.Presenters;
 using Humanizer;
+using DockerExplorer.Properties;
 
 namespace DockerExplorer.WinForms
 {
    public partial class DockerContainers : UserControl, IMainToolbarClient
    {
       private readonly DockerPresenter _presenter;
+      private string _lastSubstring = null;
+
+      public IMainToolbarServer ToolbarServer { get; set; }
 
       public DockerContainers()
       {
@@ -25,12 +29,11 @@ namespace DockerExplorer.WinForms
 
          if (!this.IsInDesignMode())
          {
-            ReloadContainers();
+            ReloadContainersAsync();
          }
       }
 
-
-      private async void ReloadContainers(string substring = null)
+      private async void ReloadContainersAsync(string substring = null)
       {
          try
          {
@@ -75,13 +78,20 @@ namespace DockerExplorer.WinForms
 
       private void containersList_SelectedIndexChanged(object sender, EventArgs e)
       {
+         bool someSelected = containersList.SelectedItems.Count > 0;
+
          //deleteContainer.Enabled = true;
-         dockerContainerDetails.Visible = true;
+         dockerContainerDetails.Visible = someSelected;
 
-         var container = containersList.SelectedItems[0].Tag as DockerContainer;
+         if (someSelected)
+         {
+            var container = containersList.SelectedItems[0].Tag as DockerContainer;
 
-         dockerContainerDetails.Presenter = _presenter;
-         dockerContainerDetails.DockerContainer = container;
+            dockerContainerDetails.Presenter = _presenter;
+            dockerContainerDetails.DockerContainer = container;
+         }
+
+         UpdateCaps();
       }
 
       private Color GetContainerStateColor(DockerContainer container)
@@ -96,14 +106,84 @@ namespace DockerExplorer.WinForms
          }
       }
 
-      public void RefreshAll(string substring)
+      public void ToolbarRefreshAll(string substring)
       {
-         ReloadContainers(substring);
+         ReloadContainersAsync(substring);
       }
 
-      public void Search(string substring)
+      public void ToolbarSearch(string substring)
       {
-         ReloadContainers(substring);
+         ReloadContainersAsync(substring);
+
+         _lastSubstring = substring;
+      }
+
+      public void ToolbarActivate()
+      {
+         UpdateCaps();
+      }
+
+      private void containersList_ItemChecked(object sender, ItemCheckedEventArgs e)
+      {
+         UpdateCaps();
+      }
+
+      private void UpdateCaps()
+      {
+         bool someCheckedOrSelected = containersList.CheckedItems.Count > 0 || containersList.SelectedItems.Count > 0;
+
+         ToolbarServer.ReportCapabilities(someCheckedOrSelected);
+      }
+
+      public async Task ToolbarDeleteAsync()
+      {
+         IReadOnlyCollection<DockerContainer> containers = SelectedContainers;
+         if (containers.Count == 0) return;
+
+         string containerList = string.Join(Environment.NewLine, containers.Select(c => c.Name));
+
+         if (DialogResult.Yes == MessageBox.Show(
+            string.Format(Resources.Dialog_DeleteContainers_Text, containerList),
+            Resources.Dialog_DeleteContainers_Title,
+            MessageBoxButtons.YesNo))
+         {
+            try
+            {
+               foreach(DockerContainer container in containers)
+               {
+                  await _presenter.DeleteContainer(container);
+               }
+            }
+            catch(Exception ex)
+            {
+               MessageBox.Show(ex.ToString());
+            }
+
+            ReloadContainersAsync(_lastSubstring);
+         }
+      }
+
+      private IReadOnlyCollection<DockerContainer> SelectedContainers
+      {
+         get
+         {
+            var checkedContainers = containersList.CheckedItems
+               .Cast<ListViewItem>()
+               .Select(i => i.Tag as DockerContainer)
+               .Where(i => i != null)
+               .ToList();
+
+            if(checkedContainers.Count == 0)
+            {
+               return containersList.SelectedItems
+                  .Cast<ListViewItem>()
+                  .Select(i => i.Tag as DockerContainer)
+                  .Where(i => i != null)
+                  .ToList();
+            }
+
+            return checkedContainers;
+         }
       }
    }
 }

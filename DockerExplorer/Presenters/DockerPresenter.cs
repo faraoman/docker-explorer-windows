@@ -90,6 +90,22 @@ namespace DockerExplorer.Presenters
          return containersResponse.Select(r => new DockerContainer(r)).ToList();
       }
 
+      public async Task DeleteContainer(DockerContainer container)
+      {
+         if (container == null)
+         {
+            throw new ArgumentNullException(nameof(container));
+         }
+
+         await Client.Containers.RemoveContainerAsync(container.Id,
+            new ContainerRemoveParameters
+            {
+               Force = true,
+               //RemoveLinks = true,
+               //RemoveVolumes = true
+            });
+      }
+
       public async Task GetContainerDetailsAsync(string containerId,
          IProgress<ContainerStatsResponse> progressCallback,
          CancellationToken cancellationToken = default)

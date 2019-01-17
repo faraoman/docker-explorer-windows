@@ -1,9 +1,20 @@
-﻿namespace DockerExplorer.WinForms
+﻿using System.Threading.Tasks;
+
+namespace DockerExplorer.WinForms
 {
    public interface IMainToolbarClient
    {
-      void RefreshAll(string substring);
+      /// <summary>
+      /// This instance is activated
+      /// </summary>
+      void ToolbarActivate();
 
-      void Search(string substring);
+      IMainToolbarServer ToolbarServer { set; }
+
+      void ToolbarRefreshAll(string substring);
+
+      void ToolbarSearch(string substring);
+
+      Task ToolbarDeleteAsync();
    }
 }

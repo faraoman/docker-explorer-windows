@@ -14,7 +14,7 @@ using DockerExplorer.WinForms;
 
 namespace DockerExplorer
 {
-   public partial class DockerServerControl : UserControl
+   public partial class DockerServerControl : UserControl, IMainToolbarServer
    {
       private static readonly Dictionary<string, TimeSpan> _updateTextToValue = new Dictionary<string, TimeSpan>
       {
@@ -34,7 +34,12 @@ namespace DockerExplorer
          comboUpdateInterval.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
          UpdateInterval = Settings.Instance.AutoRefreshContainersInterval;
 
-         _toolbarClients = new IMainToolbarClient[] { dockerImages1, dockerContainers1 };
+         _toolbarClients = new IMainToolbarClient[] { dockerContainersTab, dockerImagesTab };
+         foreach(IMainToolbarClient client in _toolbarClients)
+         {
+            client.ToolbarServer = this;
+         }
+         _toolbarClients[0].ToolbarActivate();
       }
 
       private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,15 +91,32 @@ namespace DockerExplorer
 
       private void refreshToolButton_Click(object sender, EventArgs e)
       {
-         _toolbarClients.ForEach(tc => tc.RefreshAll(searchText.Text)).ToList();
+         _toolbarClients.ForEach(tc => tc.ToolbarRefreshAll(searchText.Text)).ToList();
       }
 
       private void searchText_KeyUp(object sender, KeyEventArgs e)
       {
          if (e.KeyCode == Keys.Return)
          {
-            _toolbarClients.ForEach(tc => tc.Search(searchText.Text)).ToList();
+            _toolbarClients.ForEach(tc => tc.ToolbarSearch(searchText.Text)).ToList();
          }
+      }
+
+      public void ReportCapabilities(bool canDelete)
+      {
+         deleteToolButton.Enabled = canDelete;
+      }
+
+      private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         int index = tabs.SelectedIndex;
+
+         _toolbarClients[index].ToolbarActivate();
+      }
+
+      private void deleteToolButton_Click(object sender, EventArgs e)
+      {
+         _toolbarClients[tabs.SelectedIndex].ToolbarDeleteAsync();
       }
    }
 }
