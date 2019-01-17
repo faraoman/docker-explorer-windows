@@ -34,7 +34,7 @@ namespace DockerExplorer
          comboUpdateInterval.ComboBox.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
          UpdateInterval = Settings.Instance.AutoRefreshContainersInterval;
 
-         _toolbarClients = new IMainToolbarClient[] { dockerContainersTab, dockerImagesTab };
+         _toolbarClients = new IMainToolbarClient[] { dockerContainersTab, dockerImagesTab, dockerVolumesTab };
          foreach(IMainToolbarClient client in _toolbarClients)
          {
             client.ToolbarServer = this;

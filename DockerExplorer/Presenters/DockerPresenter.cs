@@ -134,6 +134,11 @@ namespace DockerExplorer.Presenters
             progressCallback);
       }
 
+      public async Task GetVolumesAsync()
+      {
+         VolumesListResponse volumesResponse = await Client.Volumes.ListAsync();
+      }
+
       private void AddChildren(IReadOnlyCollection<DockerImage> allImages, DockerImage parent)
       {
          var children = allImages.Where(i => i.ParentId == parent.Id).ToList();

@@ -188,6 +188,12 @@
     <Compile Include="WinForms\DockerServerControl.Designer.cs">
       <DependentUpon>DockerServerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinForms\DockerVolumes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WinForms\DockerVolumes.Designer.cs">
+      <DependentUpon>DockerVolumes.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinForms\IMainToolbarClient.cs" />
     <Compile Include="WinForms\IMainToolbarServer.cs" />
     <Compile Include="WinForms\MainForm.cs">
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\DockerServerControl.resx">
       <DependentUpon>DockerServerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\DockerVolumes.resx">
+      <DependentUpon>DockerVolumes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
