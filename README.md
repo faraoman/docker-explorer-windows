@@ -1,6 +1,6 @@
-# Docker Explorer for Windows
+![](img/doc-banner.png)
 
-## Why
+## It's blazing fast
 
 I wanted a fast, native Windows applicaton to explore lock Docker content during my development sessions. Docker console is great, but sometimes it's taking too much time to find what I need, therefore this tool.
 

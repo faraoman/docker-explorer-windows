@@ -36,6 +36,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dockerServerControl1 = new DockerExplorer.DockerServerControl();
+            this.reportAnIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(212, 34);
             this.preferencesToolStripMenuItem.Text = "&Preferences";
             this.preferencesToolStripMenuItem.Visible = false;
             // 
@@ -72,13 +73,14 @@
             // 
             this.exitToolStripMenuItem.Image = global::DockerExplorer.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(212, 34);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportAnIssueToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 34);
@@ -99,6 +101,13 @@
             this.dockerServerControl1.Name = "dockerServerControl1";
             this.dockerServerControl1.Size = new System.Drawing.Size(1570, 877);
             this.dockerServerControl1.TabIndex = 1;
+            // 
+            // reportAnIssueToolStripMenuItem
+            // 
+            this.reportAnIssueToolStripMenuItem.Name = "reportAnIssueToolStripMenuItem";
+            this.reportAnIssueToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.reportAnIssueToolStripMenuItem.Text = "Report an &Issue";
+            this.reportAnIssueToolStripMenuItem.Click += new System.EventHandler(this.reportAnIssueToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -128,6 +137,7 @@
       private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem reportAnIssueToolStripMenuItem;
    }
 }
 
