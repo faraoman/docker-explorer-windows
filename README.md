@@ -11,7 +11,9 @@ Because Electron runs 5 web servers to show a simple UI window and dramatically 
 
 ## Status
 
-Completely working and useful version
+Completely working and useful version. You can install the latest version by pressing the button below:
+
+[![](img/install.png)](http://i.isolineltd.com/dockerexplorer/Setup.exe)
 
 ## Features
 
@@ -31,7 +33,5 @@ Browse contianers, and explore logs, labels, mounts, ports and networks
 
 ![Containers Networks](img/containers-networks.png)
 
-## Installing
-
-The latest version can be installed [from here](http://i.isolineltd.com/dockerexplorer/Setup.exe). The updates are installed automatically via [Squirrel.Windows](https://github.com/Squirrel/Squirrel.Windows).
+The updates are installed automatically via [Squirrel.Windows](https://github.com/Squirrel/Squirrel.Windows).
 
