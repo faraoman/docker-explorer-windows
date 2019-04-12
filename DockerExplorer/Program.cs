@@ -34,7 +34,7 @@ namespace DockerExplorer
 #if RELEASE
          using (var mgr = new UpdateManager("http://i.isolineltd.com/dockerexplorer"))
          {
-            mgr.UpdateApp().Forget();
+            await mgr.UpdateApp();
          }
 #endif
 
