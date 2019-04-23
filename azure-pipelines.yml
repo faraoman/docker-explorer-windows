@@ -2,8 +2,10 @@ pool:
   vmImage: 'windows-2019'
 
 variables:
-  - BuildConfiguration: release
-  - BuildPlatform: x86
+  - name: BuildConfiguration
+    value: release
+  - name: BuildPlatform
+    value: x86
 
 trigger:
   batch: true
