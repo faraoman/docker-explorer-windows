@@ -34,7 +34,7 @@ steps:
     preferBundledVersion: false
 
 - task: sebastianlux.UpdateAssemblyInfo.UpdateAssemblyInfo-task.Update AssemblyInfo@1
-  displayName: 'update assembly version'
+  displayName: 'update assemblyinfo.cs version'
   inputs:
     assemblyVersion: '$(GitVersion.SemVer)'
     assemblyFileVersion: '$(GitVersion.SemVer)'
