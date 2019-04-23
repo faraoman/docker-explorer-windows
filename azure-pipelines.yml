@@ -1,0 +1,69 @@
+pool:
+  vmImage: 'windows-2019'
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+      - /doc/**/*
+
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - README.md
+      - /doc/**/*
+
+steps:
+
+- task: gittools.gitversion.gitversion-task.GitVersion@4
+  displayName: GitVersion
+  inputs:
+    preferBundledVersion: false
+
+- task: sebastianlux.UpdateAssemblyInfo.UpdateAssemblyInfo-task.Update AssemblyInfo@1
+  displayName: 'update assembly version'
+  inputs:
+    assemblyVersion: '$(GitVersion.SemVer)'
+    assemblyFileVersion: '$(GitVersion.SemVer)'
+
+- task: NuGetToolInstaller@0
+  displayName: 'isntall nuget'
+  inputs:
+    versionSpec: 4.4.1
+
+- task: NuGetCommand@2
+  displayName: 'restore packages'
+
+
+- task: VSBuild@1
+  displayName: 'build solution'
+  inputs:
+    solution: DockerExplorer.sln
+    vsVersion: 15.0
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: NuGetCommand@2
+  displayName: 'create NuGet for Squirrel'
+  inputs:
+    command: pack
+    packagesToPack: squirrel.nuspec
+    buildProperties: 'version=$(GitVersion.SemVer)'
+
+- powershell: |
+   Set-Alias Squirrel '.\packages\squirrel.windows.1.9.0\tools\Squirrel.exe'
+
+   Squirrel --releasify $(Build.ArtifactStagingDirectory)\DockerExplorer.$(GitVersion.SemVer).nupkg --releaseDir $(Build.ArtifactStagingDirectory)\Release | write-output
+  displayName: 'create Squirrel installer'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Archive Deployment Artifacts'
+  inputs:
+    ArtifactName: deploy
