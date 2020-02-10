@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DockerExplorer.Presenters;
 using DockerExplorer.Model;
 using NetBox.Extensions;
+using Docker.DotNet;
 
 namespace DockerExplorer.WinForms
 {
@@ -47,7 +48,7 @@ namespace DockerExplorer.WinForms
             this.Handle(ex);
          }
 
-         if(_lastSelectedImageId == null)
+         if (_lastSelectedImageId == null)
          {
             _lastSelectedImageId = treeDockerImages.SelectedNode == null
                ? null
@@ -68,7 +69,7 @@ namespace DockerExplorer.WinForms
 
       private void AddSubImages(IReadOnlyCollection<DockerImage> images, string substring)
       {
-         if(!string.IsNullOrEmpty(substring))
+         if (!string.IsNullOrEmpty(substring))
          {
             images = images
                .Where(i => i.Name.IndexOf(substring, StringComparison.OrdinalIgnoreCase) != -1)
@@ -76,7 +77,7 @@ namespace DockerExplorer.WinForms
          }
 
 
-         foreach(DockerImage image in images)
+         foreach (DockerImage image in images)
          {
             if (!(checkHideUntagged.Checked && image.Tag == "<none>"))
             {
@@ -90,7 +91,7 @@ namespace DockerExplorer.WinForms
                   });
             }
 
-            if(image.Children?.Count > 0)
+            if (image.Children?.Count > 0)
             {
                AddSubImages(image.Children, substring);
             }
@@ -194,14 +195,14 @@ namespace DockerExplorer.WinForms
 
       private TreeNode FindNode(TreeNodeCollection nodes, Func<DockerImage, bool> predicate)
       {
-         foreach(TreeNode node in nodes)
+         foreach (TreeNode node in nodes)
          {
             if (node.Tag is DockerImage image)
             {
                if (predicate(image))
                   return node;
 
-               if(node.Nodes.Count > 0)
+               if (node.Nodes.Count > 0)
                {
                   TreeNode cr = FindNode(node.Nodes, predicate);
                   if (cr != null)
@@ -234,12 +235,28 @@ namespace DockerExplorer.WinForms
 
       public void ToolbarActivate()
       {
-         ToolbarServer.ReportCapabilities(false);
+         ToolbarServer.ReportCapabilities(true);
       }
 
       public async Task ToolbarDeleteAsync()
       {
-         
+         ListView.SelectedListViewItemCollection list = listDockerImages.SelectedItems;
+         var dockerConfig = new DockerClientConfiguration(new Uri("npipe://./pipe/docker_engine"));
+         DockerClient client = dockerConfig.CreateClient();
+         IList<IDictionary<string, string>> result = await client.Images.DeleteImageAsync(list[0].Text, new Docker.DotNet.Models.ImageDeleteParameters() { Force = false });
+         ReloadImages();
+      }
+
+      private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+      {
+         if (tabControl1.SelectedTab == tabPage1)
+         {
+
+         }
+         else
+         {
+            
+         }
       }
    }
 }

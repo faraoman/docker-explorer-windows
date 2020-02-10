@@ -28,6 +28,7 @@
       /// </summary>
       private void InitializeComponent()
       {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label2;
@@ -53,11 +54,13 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listDockerImages = new System.Windows.Forms.ListView();
-            this.checkHideUntagged = new System.Windows.Forms.CheckBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkHideUntagged = new System.Windows.Forms.CheckBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -76,61 +79,68 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(17, 136);
+            label4.Location = new System.Drawing.Point(9, 74);
+            label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(110, 25);
+            label4.Size = new System.Drawing.Size(60, 13);
             label4.TabIndex = 6;
             label4.Text = "Repository:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(70, 94);
+            label3.Location = new System.Drawing.Point(38, 51);
+            label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(57, 25);
+            label3.Size = new System.Drawing.Size(30, 13);
             label3.TabIndex = 4;
             label3.Text = "Size:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(28, 52);
+            label2.Location = new System.Drawing.Point(15, 28);
+            label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(99, 25);
+            label2.Size = new System.Drawing.Size(55, 13);
             label2.TabIndex = 1;
             label2.Text = "Parent ID:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(90, 12);
+            label1.Location = new System.Drawing.Point(49, 7);
+            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(37, 25);
+            label1.Size = new System.Drawing.Size(21, 13);
             label1.TabIndex = 0;
             label1.Text = "ID:";
             // 
             // splitter2
             // 
-            splitter2.Location = new System.Drawing.Point(416, 0);
+            splitter2.Location = new System.Drawing.Point(227, 0);
+            splitter2.Margin = new System.Windows.Forms.Padding(2);
             splitter2.Name = "splitter2";
-            splitter2.Size = new System.Drawing.Size(7, 1068);
+            splitter2.Size = new System.Drawing.Size(4, 579);
             splitter2.TabIndex = 4;
             splitter2.TabStop = false;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(70, 180);
+            label5.Location = new System.Drawing.Point(38, 98);
+            label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(53, 25);
+            label5.Size = new System.Drawing.Size(29, 13);
             label5.TabIndex = 10;
             label5.Text = "Tag:";
             // 
@@ -141,9 +151,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             groupBox1.Controls.Add(this.listContainerHistory);
             groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            groupBox1.Location = new System.Drawing.Point(22, 235);
+            groupBox1.Location = new System.Drawing.Point(12, 127);
+            groupBox1.Margin = new System.Windows.Forms.Padding(2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(943, 819);
+            groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            groupBox1.Size = new System.Drawing.Size(513, 444);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "History";
@@ -161,9 +173,11 @@
             this.listContainerHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listContainerHistory.FullRowSelect = true;
             this.listContainerHistory.GridLines = true;
-            this.listContainerHistory.Location = new System.Drawing.Point(3, 25);
+            this.listContainerHistory.HideSelection = false;
+            this.listContainerHistory.Location = new System.Drawing.Point(2, 15);
+            this.listContainerHistory.Margin = new System.Windows.Forms.Padding(2);
             this.listContainerHistory.Name = "listContainerHistory";
-            this.listContainerHistory.Size = new System.Drawing.Size(937, 791);
+            this.listContainerHistory.Size = new System.Drawing.Size(509, 427);
             this.listContainerHistory.TabIndex = 0;
             this.listContainerHistory.UseCompatibleStateImageBehavior = false;
             this.listContainerHistory.View = System.Windows.Forms.View.Details;
@@ -192,13 +206,19 @@
             // 
             Tags.Text = "Tags";
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Name";
+            columnHeader1.Width = 132;
+            // 
             // treeDockerImages
             // 
             this.treeDockerImages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeDockerImages.HideSelection = false;
-            this.treeDockerImages.Location = new System.Drawing.Point(3, 3);
+            this.treeDockerImages.Location = new System.Drawing.Point(2, 2);
+            this.treeDockerImages.Margin = new System.Windows.Forms.Padding(2);
             this.treeDockerImages.Name = "treeDockerImages";
-            this.treeDockerImages.Size = new System.Drawing.Size(374, 1054);
+            this.treeDockerImages.Size = new System.Drawing.Size(196, 542);
             this.treeDockerImages.TabIndex = 1;
             this.treeDockerImages.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeDockerImages_AfterSelect);
             // 
@@ -217,17 +237,19 @@
             this.panel1.Controls.Add(label2);
             this.panel1.Controls.Add(label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(423, 0);
+            this.panel1.Location = new System.Drawing.Point(231, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(984, 1068);
+            this.panel1.Size = new System.Drawing.Size(536, 579);
             this.panel1.TabIndex = 3;
             // 
             // linkParentId
             // 
             this.linkParentId.AutoSize = true;
-            this.linkParentId.Location = new System.Drawing.Point(133, 52);
+            this.linkParentId.Location = new System.Drawing.Point(73, 28);
+            this.linkParentId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkParentId.Name = "linkParentId";
-            this.linkParentId.Size = new System.Drawing.Size(82, 25);
+            this.linkParentId.Size = new System.Drawing.Size(46, 13);
             this.linkParentId.TabIndex = 13;
             this.linkParentId.TabStop = true;
             this.linkParentId.Text = "parent...";
@@ -238,10 +260,11 @@
             this.txtTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTag.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTag.Location = new System.Drawing.Point(134, 179);
+            this.txtTag.Location = new System.Drawing.Point(73, 97);
+            this.txtTag.Margin = new System.Windows.Forms.Padding(2);
             this.txtTag.Name = "txtTag";
             this.txtTag.ReadOnly = true;
-            this.txtTag.Size = new System.Drawing.Size(832, 22);
+            this.txtTag.Size = new System.Drawing.Size(453, 13);
             this.txtTag.TabIndex = 11;
             // 
             // txtRepository
@@ -249,17 +272,19 @@
             this.txtRepository.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRepository.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRepository.Location = new System.Drawing.Point(133, 136);
+            this.txtRepository.Location = new System.Drawing.Point(73, 74);
+            this.txtRepository.Margin = new System.Windows.Forms.Padding(2);
             this.txtRepository.Name = "txtRepository";
             this.txtRepository.ReadOnly = true;
-            this.txtRepository.Size = new System.Drawing.Size(832, 22);
+            this.txtRepository.Size = new System.Drawing.Size(453, 13);
             this.txtRepository.TabIndex = 9;
             // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 1068);
+            this.splitter1.Size = new System.Drawing.Size(2, 579);
             this.splitter1.TabIndex = 8;
             this.splitter1.TabStop = false;
             // 
@@ -268,10 +293,11 @@
             this.txtSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSize.Location = new System.Drawing.Point(134, 94);
+            this.txtSize.Location = new System.Drawing.Point(73, 51);
+            this.txtSize.Margin = new System.Windows.Forms.Padding(2);
             this.txtSize.Name = "txtSize";
             this.txtSize.ReadOnly = true;
-            this.txtSize.Size = new System.Drawing.Size(832, 22);
+            this.txtSize.Size = new System.Drawing.Size(453, 13);
             this.txtSize.TabIndex = 5;
             // 
             // txtId
@@ -279,10 +305,11 @@
             this.txtId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtId.Location = new System.Drawing.Point(134, 12);
+            this.txtId.Location = new System.Drawing.Point(73, 7);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(832, 22);
+            this.txtId.Size = new System.Drawing.Size(453, 13);
             this.txtId.TabIndex = 2;
             // 
             // panel2
@@ -291,8 +318,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(416, 1068);
+            this.panel2.Size = new System.Drawing.Size(227, 579);
             this.panel2.TabIndex = 5;
             // 
             // tabControl1
@@ -302,30 +330,21 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(416, 1021);
+            this.tabControl1.Size = new System.Drawing.Size(227, 554);
             this.tabControl1.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.treeDockerImages);
-            this.tabPage1.Location = new System.Drawing.Point(32, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(380, 1060);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Tree";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.listDockerImages);
-            this.tabPage2.Location = new System.Drawing.Point(32, 4);
+            this.tabPage2.Location = new System.Drawing.Point(23, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(380, 1013);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(200, 546);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Flat";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -335,65 +354,92 @@
             this.listDockerImages.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listDockerImages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             columnHeader1});
+            this.listDockerImages.ContextMenuStrip = this.contextMenuStrip1;
             this.listDockerImages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listDockerImages.FullRowSelect = true;
             this.listDockerImages.GridLines = true;
             this.listDockerImages.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listDockerImages.HideSelection = false;
-            this.listDockerImages.Location = new System.Drawing.Point(3, 3);
+            this.listDockerImages.Location = new System.Drawing.Point(2, 2);
+            this.listDockerImages.Margin = new System.Windows.Forms.Padding(2);
             this.listDockerImages.MultiSelect = false;
             this.listDockerImages.Name = "listDockerImages";
-            this.listDockerImages.Size = new System.Drawing.Size(374, 1007);
+            this.listDockerImages.Size = new System.Drawing.Size(196, 542);
             this.listDockerImages.TabIndex = 0;
             this.listDockerImages.UseCompatibleStateImageBehavior = false;
             this.listDockerImages.View = System.Windows.Forms.View.Details;
             this.listDockerImages.SelectedIndexChanged += new System.EventHandler(this.listDockerImages_SelectedIndexChanged);
             // 
-            // columnHeader1
+            // tabPage1
             // 
-            columnHeader1.Text = "Name";
-            columnHeader1.Width = 132;
+            this.tabPage1.Controls.Add(this.treeDockerImages);
+            this.tabPage1.Location = new System.Drawing.Point(23, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(200, 546);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Tree";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.checkHideUntagged);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 554);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(227, 25);
+            this.panel3.TabIndex = 1;
             // 
             // checkHideUntagged
             // 
             this.checkHideUntagged.AutoSize = true;
             this.checkHideUntagged.Checked = true;
             this.checkHideUntagged.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkHideUntagged.Location = new System.Drawing.Point(3, 6);
+            this.checkHideUntagged.Location = new System.Drawing.Point(2, 3);
+            this.checkHideUntagged.Margin = new System.Windows.Forms.Padding(2);
             this.checkHideUntagged.Name = "checkHideUntagged";
-            this.checkHideUntagged.Size = new System.Drawing.Size(230, 29);
+            this.checkHideUntagged.Size = new System.Drawing.Size(130, 17);
             this.checkHideUntagged.TabIndex = 1;
             this.checkHideUntagged.Text = "hide untagged images";
             this.checkHideUntagged.UseVisualStyleBackColor = true;
             this.checkHideUntagged.CheckedChanged += new System.EventHandler(this.checkHideUntagged_CheckedChanged);
             // 
-            // panel3
+            // contextMenuStrip1
             // 
-            this.panel3.Controls.Add(this.checkHideUntagged);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 1021);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(416, 47);
-            this.panel3.TabIndex = 1;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // DockerImages
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(splitter2);
             this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DockerImages";
-            this.Size = new System.Drawing.Size(1407, 1068);
+            this.Size = new System.Drawing.Size(767, 579);
             groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
       }
@@ -416,5 +462,7 @@
       private System.Windows.Forms.ListView listDockerImages;
       private System.Windows.Forms.Panel panel3;
       private System.Windows.Forms.CheckBox checkHideUntagged;
+      private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+      private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
    }
 }
